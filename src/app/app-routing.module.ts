@@ -6,7 +6,7 @@ import { SignInComponent } from './home/views/sign-in/sign-in.component';
 import { SignUpComponent } from './home/views/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './home/views/forgot-password/forgot-password.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
+// import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
 import { AuthEtudiantGuard } from './core/guards/etudiant/auth-etudiant.guard';
 
 const routes: Routes = [
@@ -15,13 +15,25 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'admin', canActivate:[AuthGuard , AuthAdminGuard], loadChildren:()=>import('./modules/admin/admin.module').then(x => x.AdminModule) },
-  { path: 'etudiant', canActivate:[AuthGuard , AuthEtudiantGuard], loadChildren:()=>import('./modules/etudiant/etudiant.module').then(x => x.EtudiantModule) },
-  { path: '**', component:Error404Component }
+  {
+    path: 'admin',
+    // canActivate:[AuthGuard , AuthAdminGuard],
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((x) => x.AdminModule),
+  },
+  {
+    path: 'etudiant',
+    canActivate: [AuthGuard, AuthEtudiantGuard],
+    loadChildren: () =>
+      import('./modules/etudiant/etudiant.module').then(
+        (x) => x.EtudiantModule
+      ),
+  },
+  { path: '**', component: Error404Component },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

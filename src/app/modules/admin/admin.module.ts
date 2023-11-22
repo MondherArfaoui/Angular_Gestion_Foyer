@@ -12,7 +12,8 @@ import { ListBlocFoyerComponent } from './views/list-bloc-foyer/list-bloc-foyer.
 import { ListChambreBlocComponent } from './views/list-chambre-bloc/list-chambre-bloc.component';
 import { ListEtudiantComponent } from './views/list-etudiant/list-etudiant.component';
 import { ListReservationComponent } from './views/list-reservation/list-reservation.component';
-
+import { AjouterBlocComponent } from './views/ajouter-bloc/ajouter-bloc.component';
+import { UpdateBlocComponent } from './views/update-bloc/update-bloc.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,16 @@ import { ListReservationComponent } from './views/list-reservation/list-reservat
     ListBlocFoyerComponent,
     ListChambreBlocComponent,
     ListEtudiantComponent,
-    ListReservationComponent
+    ListReservationComponent,
+    AjouterBlocComponent,
+    UpdateBlocComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

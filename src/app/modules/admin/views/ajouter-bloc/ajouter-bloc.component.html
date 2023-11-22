@@ -1,0 +1,38 @@
+<div class="conatiner custumer-container">
+
+
+
+    <div class="card mb-3 w-75">
+        <form [formGroup]="addBlocForm" (ngSubmit)="creatNewBloc()">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="../../../../../assets/images/Team work-bro.svg" class="img-fluid rounded-start" alt="...">
+
+                </div>
+
+                <div class="col-md-8 custumer">
+                    <div class="card-body w-100 ">
+                        <h5 class="card-title ">Ajouter nouveau Bloc</h5>
+                        <div class="mb-3">
+                            <label for="nomBloc" class="form-label">Nom Bloc</label>
+                            <input type="text" class="form-control " id="nomBloc" aria-describedby="nomBloc"
+                                formControlName="nomBloc">
+                        </div>
+                        <div class="mb-3">
+                            <label for="capaciteBloc" class="form-label">Capacité Bloc</label>
+                            <input type="number" class="form-control " id="capaciteBloc" aria-describedby="capaciteBloc"
+                                formControlName="capaciteBloc">
+                        </div>
+                        <div class="custumerContainerBtn">
+
+                            <button class="btn btn-outline-danger" type="button" (click)="resetForm()">Annuler</button>
+                            <button class="btn btn-outline-primary" type="submit">Confirmer</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>

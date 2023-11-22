@@ -1,1 +1,38 @@
-<p>list-bloc-foyer works!</p>
+<div class="container custumer-container my-5 mx-3">
+    <div class="card custumer-card">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">id Bloc</th>
+                        <th scope="col">Nom Bloc</th>
+                        <th scope="col">Capacité Bloc</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bloc of ListBlocs">
+                        <th scope="row"> {{bloc.idBloc}} </th>
+                        <td>{{bloc.nomBloc}}</td>
+                        <td>{{bloc.capaciteBloc}}</td>
+                        <!-- <td>{{bloc.foyer}}</td> -->
+                        <td>
+                            <div class="custumer_action">
+                                <i class="bi bi-trash-fill text-danger" (click)="deleteBloc(bloc.idBloc)"></i>
+                                <button class="custumer_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                    (click)="SendIdBloc(bloc.idBloc)"><i
+                                        class="bi bi-pencil-fill text-mauve"></i></button>
+                                <i class="bi bi-eye-fill"></i>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <app-update-bloc></app-update-bloc>
+
+
+</div>

@@ -1,0 +1,20 @@
+.custumer-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.custumer-card{
+  width: 92%;
+}
+.custumer_action{
+  display: flex;
+  flex-direction: row;
+ 
+  gap: 20px;
+ 
+}
+.custumer_btn{
+ background-color: transparent;
+  border: none;
+}
