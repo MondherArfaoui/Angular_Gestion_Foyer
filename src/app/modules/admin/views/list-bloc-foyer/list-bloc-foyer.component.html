@@ -7,7 +7,10 @@
                         <th scope="col">id Bloc</th>
                         <th scope="col">Nom Bloc</th>
                         <th scope="col">Capacité Bloc</th>
+                        <th scope="col">Foyer Associé</th>
                         <th scope="col">Actions</th>
+                        <th scope="col">Associer foyer</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -15,25 +18,74 @@
                         <th scope="row"> {{bloc.idBloc}} </th>
                         <td>{{bloc.nomBloc}}</td>
                         <td>{{bloc.capaciteBloc}}</td>
-                        <!-- <td>{{bloc.foyer}}</td> -->
+                        <!-- <td>{{bloc.foyer?.nomFoyer?bloc.foyer?.nomFoyer:"Pas encore"}}</td> -->
+                        <td><span class="badge rounded-pill text-bg-info w-75 "
+                                *ngIf="bloc.foyer?.nomFoyer!=null || undefined">{{bloc?.foyer?.nomFoyer}}</span>
+                            <span class="badge text-bg-warning   w-75 text-sm" *ngIf="bloc.foyer?.nomFoyer==null">pas
+                                d'affectation</span>
+
+                        </td>
+
+
                         <td>
                             <div class="custumer_action">
                                 <i class="bi bi-trash-fill text-danger" (click)="deleteBloc(bloc.idBloc)"></i>
                                 <button class="custumer_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                    (click)="SendIdBloc(bloc.idBloc)"><i
-                                        class="bi bi-pencil-fill text-mauve"></i></button>
-                                <i class="bi bi-eye-fill"></i>
+                                    (click)="getIdBloc(bloc.idBloc)"><i
+                                        class="bi bi-pencil-fill custumer-color"></i></button>
+                                <i class="bi bi-eye-fill" (click)="detailsById(bloc.idBloc)"></i>
+
                             </div>
                         </td>
+                        <td> <button *ngIf="bloc.foyer==null" type="button" class="btn btn-warning p-1 w-75 "
+                                (click)="affecter(bloc.idBloc)">Affecter Foyer</button>
+                            <button *ngIf="bloc.foyer!=null" disabled type="button"
+                                class="btn btn-primary p-1 w-75">Désaffectrer</button>
+                        </td>
+                        <td>
+
+                        </td>
+
                     </tr>
 
                 </tbody>
             </table>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="contaainer">
 
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form [formGroup]="UpdateBlocForm" (ngSubmit)="updateBloc()">
+                    <div class="modal-content">
+                        <div class="modal-header text-danger my-4">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier un foyer</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
 
-    <app-update-bloc></app-update-bloc>
+                            <div class="mb-3">
+                                <label for="nomBloc" class="form-label">Nom Bloc</label>
+                                <input type="text" class="form-control " id="nomBloc" aria-describedby="nomBloc"
+                                    formControlName="nomBloc">
+                            </div>
+                            <div class="mb-3">
+                                <label for="capaciteBloc" class="form-label">Capacité Bloc</label>
+                                <input type="number" class="form-control " id="capaciteBloc"
+                                    aria-describedby="capaciteBloc" formControlName="capaciteBloc">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Annuler </a>
+                            <button type="submit" class="btn btn-outline-primary">Modifier</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 </div>

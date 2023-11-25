@@ -30,7 +30,7 @@ export class AdminLayoutComponent {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  // userconnect = JSON.parse(localStorage.getItem("userconnect")!);
+  userconnect = JSON.parse(localStorage.getItem('userconnect')!);
 
   logout() {
     localStorage.clear();

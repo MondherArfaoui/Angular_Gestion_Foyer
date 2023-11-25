@@ -1,0 +1,13 @@
+.custum_description_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 3rem;
+    text-align: center;
+    letter-spacing: 0.7px;
+    line-height: 2rem;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+}

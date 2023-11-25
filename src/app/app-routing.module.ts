@@ -6,7 +6,7 @@ import { SignInComponent } from './home/views/sign-in/sign-in.component';
 import { SignUpComponent } from './home/views/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './home/views/forgot-password/forgot-password.component';
 import { AuthGuard } from './core/guards/auth.guard';
-// import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
+import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
 import { AuthEtudiantGuard } from './core/guards/etudiant/auth-etudiant.guard';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   {
     path: 'admin',
-    // canActivate:[AuthGuard , AuthAdminGuard],
+    // canActivate: [AuthGuard, AuthAdminGuard],
     loadChildren: () =>
       import('./modules/admin/admin.module').then((x) => x.AdminModule),
   },

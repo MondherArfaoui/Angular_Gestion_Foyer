@@ -4,6 +4,7 @@ import { BlocService } from 'src/app/core/services/bloc/bloc.service';
 import { UpdateBlocComponent } from '../update-bloc/update-bloc.component';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-list-bloc-foyer',
@@ -12,10 +13,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListBlocFoyerComponent implements OnInit {
   ListBlocs: Bloc[] = [];
+  UpdateBlocForm!: FormGroup;
 
-  constructor(private _blocService: BlocService, private _router: Router) {}
+  constructor(
+    private _blocService: BlocService,
+    private _router: Router,
+    private _builder: FormBuilder
+  ) {}
   ngOnInit(): void {
     this.getAllBlocs();
+    this.UpdateBlocForm = this._builder.group({
+      nomBloc: ['', Validators.required],
+      capaciteBloc: ['', Validators.required],
+    });
   }
   getAllBlocs() {
     this._blocService.getAllBlocs().subscribe({
@@ -39,9 +49,6 @@ export class ListBlocFoyerComponent implements OnInit {
         });
       },
     });
-  }
-  SendIdBloc(id: number) {
-    this._router.navigate(['/admin/modifier_bloc/', +id]);
   }
 
   deleteBloc(id: number) {
@@ -74,5 +81,55 @@ export class ListBlocFoyerComponent implements OnInit {
         });
       },
     });
+  }
+  retournerVersListeBloc() {
+    console.log('yes');
+  }
+  getIdBloc(id: number) {
+    this._blocService.getBlocById(id).subscribe({
+      next: (data) => {
+        this.UpdateBlocForm.patchValue(data);
+      },
+      error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      },
+    });
+  }
+
+  updateBloc() {
+    if (this.UpdateBlocForm.valid) {
+      this._blocService.updateBloc(this.UpdateBlocForm.value).subscribe({
+        next: (data) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'bloc completed Updated  successfully.',
+          });
+          this.getAllBlocs();
+        },
+        error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          });
+        },
+      });
+    }
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Invalid data!',
+    });
+  }
+  detailsById(idbloc: number) {
+    this._router.navigate(['admin/details_bloc/' + idbloc]);
+  }
+  affecter(idbloc: number) {
+    this._router.navigate(['admin/affecter_foyer_bloc/' + idbloc]);
   }
 }

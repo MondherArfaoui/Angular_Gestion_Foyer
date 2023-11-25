@@ -1,0 +1,30 @@
+<div class="container custumer_container mx-3">
+
+    <div class="row">
+        <div class="col-12 col-md-6 custumer_position">
+
+            <div class="card p-3 w-100">
+
+                <form [formGroup]="affecterBlocForm" (ngSubmit)="affecterfoyerAunBloc()">
+                    <div class="mb-3">
+                        <label for="Foyer" class="mb-4 p-1">Choisir un foyer : </label>
+                        <select class="form-select form-select-lg mb-3 " formControlName="idFoyer">
+                            <option *ngFor="let foyer of listeFoyer" [value]="foyer.idFoyer">{{foyer.nomFoyer}}</option>
+                        </select>
+                    </div>
+
+                    <div class="custumer-btn-container p-2">
+                        <button class="btn btn-outline-danger" type="button" (click)="resetForm()">Annuler</button>
+                        <button class="btn btn-outline-warning" routerLink="/admin/list-bloc-foyer"
+                            type="button">Retour</button>
+                        <button class="btn btn-outline-primary" type="sumbit">Affecter </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-5">
+            <img src="/assets/images/Shared goals-pana.png" alt="">
+        </div>
+
+    </div>
+</div>

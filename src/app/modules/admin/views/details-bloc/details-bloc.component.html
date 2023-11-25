@@ -1,0 +1,40 @@
+<div class="container container_custumer ">
+    <p class="text-justify m-5 p-3 custumer-text-header"> <strong>Dans cette section, vous trouverez des informations
+            détaillées sur le bloc
+            en
+            question.
+            Explorez les éléments
+            ci-dessous pour obtenir un aperçu approfondi de ses composants et fonctionnalités. Chaque détail est
+            soigneusement présenté pour vous offrir une vue complète et informative du bloc, vous permettant ainsi de
+            mieux
+            comprendre son rôle et son importance au sein du système</strong></p>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <img src="/assets/images/Studying-bro.png" class="img-fluid" alt="">
+
+        </div>
+        <div class="col-12 col-md-6 custumer_card_position">
+            <div class="card me-lg-5 w-100">
+                <div class="card-header custumer_header">
+                    <h5> Details du bloc <strong> {{bloc.idBloc}}</strong></h5>
+                </div>
+                <ul class="list-group list-group-flush p-2">
+                    <li class="list-group-item ">Identifiant bloc est : <strong> {{bloc.idBloc}}</strong></li>
+
+                    <li class="list-group-item"> Nom du bloc est : <strong> {{bloc.nomBloc}}</strong></li>
+                    <li class="list-group-item">Capacité du bloc est : <strong>{{bloc.capaciteBloc}} </strong></li>
+                    <li class="list-group-item">Foyer associé a ce bloc est :
+                        <ul class=" p-4">
+                            <li>identifiant : <strong>{{bloc.foyer.idFoyer }} </strong> </li>
+                            <li>Nom foyer : <strong>{{bloc.foyer.nomFoyer}} </strong></li>
+                            <li>Capacité Foyer : <strong>{{bloc.foyer.capaciteFoyer}} </strong> </li>
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

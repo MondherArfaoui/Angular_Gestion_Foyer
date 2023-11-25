@@ -9,6 +9,9 @@ import { ListChambreBlocComponent } from './views/list-chambre-bloc/list-chambre
 import { ListEtudiantComponent } from './views/list-etudiant/list-etudiant.component';
 import { AjouterBlocComponent } from './views/ajouter-bloc/ajouter-bloc.component';
 import { UpdateBlocComponent } from './views/update-bloc/update-bloc.component';
+import { DetailsBlocComponent } from './views/details-bloc/details-bloc.component';
+import { AffecterBlocFoyerComponent } from './views/affecter-bloc-foyer/affecter-bloc-foyer.component';
+import { AffecterChambresBlocComponent } from './views/affecter-chambres-bloc/affecter-chambres-bloc.component';
 
 const routes: Routes = [
   {
@@ -24,6 +27,15 @@ const routes: Routes = [
       { path: 'list-etudiant', component: ListEtudiantComponent },
       { path: 'ajouter_bloc', component: AjouterBlocComponent },
       { path: 'modifier_bloc/:idBloc', component: UpdateBlocComponent },
+      { path: 'details_bloc/:idbloc', component: DetailsBlocComponent },
+      {
+        path: 'affecter_chambres_bloc',
+        component: AffecterChambresBlocComponent,
+      },
+      {
+        path: 'affecter_foyer_bloc/:idbloc',
+        component: AffecterBlocFoyerComponent,
+      },
     ],
   },
 ];

@@ -1,14 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Bloc } from '../../models/bloc/bloc';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BlocService {
+  headers = new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addBloc(bloc: Bloc) {
     return this.http.post(`${environment.baseUrl}/bloc/add`, bloc);
@@ -31,10 +34,16 @@ export class BlocService {
   }
 
   affecterChambresABloc(idChambre: number[], idBloc: number) {
-    return this.http.put(`${environment.baseUrl}/bloc/affecterChambres/${idBloc}`, idChambre);
+    return this.http.put(
+      `${environment.baseUrl}/bloc/affecterChambres/${idBloc}`,
+      idChambre
+    );
   }
 
   affecterBlocAFoyer(idBloc: number, idFoyer: number) {
-    return this.http.put(`${environment.baseUrl}/bloc/affecterFoyer/${idBloc}/${idFoyer}`, null);
+    return this.http.put(
+      `${environment.baseUrl}/bloc/affecterBlocFoyer/${idBloc}/${idFoyer}`,
+      null
+    );
   }
 }

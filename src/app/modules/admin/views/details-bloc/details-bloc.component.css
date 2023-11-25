@@ -1,0 +1,15 @@
+.custumer_card_position{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+}
+.custumer_header{
+    background-color: yellow;
+    padding: 20px;
+    text-align: center;
+}
+.custumer-text-header{
+    line-height: 32px;
+    letter-spacing:0.9px;
+}

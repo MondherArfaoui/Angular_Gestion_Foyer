@@ -1,0 +1,18 @@
+.custumer-btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.custumer_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.custumer_position{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

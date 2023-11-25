@@ -14,6 +14,9 @@ import { ListEtudiantComponent } from './views/list-etudiant/list-etudiant.compo
 import { ListReservationComponent } from './views/list-reservation/list-reservation.component';
 import { AjouterBlocComponent } from './views/ajouter-bloc/ajouter-bloc.component';
 import { UpdateBlocComponent } from './views/update-bloc/update-bloc.component';
+import { DetailsBlocComponent } from './views/details-bloc/details-bloc.component';
+import { AffecterBlocFoyerComponent } from './views/affecter-bloc-foyer/affecter-bloc-foyer.component';
+import { AffecterChambresBlocComponent } from './views/affecter-chambres-bloc/affecter-chambres-bloc.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { UpdateBlocComponent } from './views/update-bloc/update-bloc.component';
     ListReservationComponent,
     AjouterBlocComponent,
     UpdateBlocComponent,
+    DetailsBlocComponent,
+    AffecterBlocFoyerComponent,
+    AffecterChambresBlocComponent,
   ],
   imports: [
     CommonModule,
