@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   {
     path: 'admin',
-    // canActivate: [AuthGuard, AuthAdminGuard],
+    canActivate: [AuthGuard, AuthAdminGuard],
     loadChildren: () =>
       import('./modules/admin/admin.module').then((x) => x.AdminModule),
   },

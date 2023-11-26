@@ -6,18 +6,71 @@
         </strong></p>
     <div class="card">
         <div class="col-12 col-md-12">
-            <div class="mb-3 p-4">
-                <label for="Foyer" class="mb-4 p-1">Bloc :</label>
-                <select class="form-select form-select-lg mb-3 " formControlName="idFoyer">
-                    <option></option>
-                </select>
-            </div>
+            <form [formGroup]="affecterchambreBlocForm" (ngSubmit)="affecterBlocToFoyer()">
 
 
-            <div class="my-3 p-3">
+
+                <div class="mb-3 p-4">
+                    <label for="Foyer" class="mb-4 p-1">Bloc :</label>
+                    <select class="form-select form-select-lg mb-3 " formControlName="idBloc"
+                        (change)="onSelectChange($event)">
+                        <option *ngFor="let index of listeBloc" [value]="index.idBloc">{{index.nomBloc}}</option>
+                    </select>
+                </div>
+
+                <div *ngIf="IsReady">
+                    <div class="my-3 p-3">
+                        <label class="ms-2 mb-3"> Choisir Chambre :</label>
+                        <div class="card p-2 m-2 custumer-card">
+                            <table class="table table-responsive p-1">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th scope="col">Numero chambre </th>
+                                        <th scope="col">Statut</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let chambre of listeChambres">
+                                    <tr>
+                                        <th>
+                                            <div class="form-check ">
+                                                <input class="form-check-input "
+                                                    [ngClass]="{'table_row_sahdow':chambre.bloc==null}" type="checkbox"
+                                                    value="" [checked]="SelectedChambre.includes(chambre)"
+                                                    (change)="gererSelection(chambre)" [disabled]="chambre.bloc!=null">
+                                                <label class="form-check-label" for="defaultCheck1">
+
+                                                </label>
+                                            </div>
+                                        </th>
+                                        <th>{{chambre.numeroChambre}}</th>
+                                        <td>
 
 
-            </div>
+                                            <p *ngIf="chambre.bloc!=null">
+                                                <strong>
+
+                                                    {{chambre?.bloc?.nomBloc}}
+                                                </strong>
+                                            </p>
+                                            <p *ngIf="chambre.bloc==null"><strong>Libre</strong></p>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <div class="mb-3 p-1 custumer_btn">
+                        <button class="btn btn-outline-danger" type="button"
+                            (click)="resetFormAndListe()">Anuuler</button>
+                        <button class="btn btn-outline-primary" type="submit">Affecter</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>

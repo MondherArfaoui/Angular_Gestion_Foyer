@@ -69,8 +69,8 @@ export class ListBlocFoyerComponent implements OnInit {
               text: 'Your bloc has been deleted.',
               icon: 'success',
             });
-            this.getAllBlocs();
           }
+          this.getAllBlocs();
         });
       },
       error: (error) => {
@@ -111,7 +111,7 @@ export class ListBlocFoyerComponent implements OnInit {
           });
           this.getAllBlocs();
         },
-        error: (error) => {
+        error: () => {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

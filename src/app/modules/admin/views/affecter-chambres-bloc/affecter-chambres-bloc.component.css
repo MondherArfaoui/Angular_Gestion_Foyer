@@ -11,3 +11,16 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: x-large;
 }
+.custumer-card{
+    
+}
+.custumer_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.table_row_sahdow{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
