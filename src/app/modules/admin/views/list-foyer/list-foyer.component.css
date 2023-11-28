@@ -1,0 +1,21 @@
+.custumer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.custumer_table{
+    overflow-x: scroll;
+}
+.red-icon{
+    color: red;
+}
+.custum_action_btn{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.custumer_btn{
+    background-color: transparent;
+    border: none;
+}
