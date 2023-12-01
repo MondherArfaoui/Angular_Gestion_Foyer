@@ -109,15 +109,18 @@
 									<label for="exampleInputImage" class="form-label">Photo de profil *</label>
 									<div class="input-group input-group-lg">
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-file-image"></i></span>
-										<input type="file" class="form-control border-0 bg-light rounded-end ps-1" id="exampleInputImage" formControlName="image">
+										<input type="file" class="form-control border-0 bg-light rounded-end ps-1" id="exampleInputImage" (change)="onFileSelected($event)">
 									</div>
 								</div>
                                 <!-- Ecole -->
 								<div class="mb-4">
 									<label for="exampleInputEcole" class="form-label">École *</label>
 									<div class="input-group input-group-lg">
-										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-school"></i></span>
-										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="École" id="exampleInputEcole" formControlName="ecole">
+									  <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-school"></i></span>
+									  <select class="border-0 bg-light rounded-end ps-1 form-select border-0 z-index-9" id="exampleInputEcole" formControlName="universite">
+										<option value="" disabled>Selectionner votre université</option>
+										<option *ngFor="let universite of listUniversite" [value]="universite.idUniversite">{{ universite.nomUniversite }}</option>
+									  </select>
 									</div>
 								</div>
 								<!-- Email -->

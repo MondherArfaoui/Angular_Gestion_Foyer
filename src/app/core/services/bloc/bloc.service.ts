@@ -22,6 +22,10 @@ export class BlocService {
     return this.http.get<Bloc[]>(`${environment.baseUrl}/bloc/all`);
   }
 
+  getAllBlocsByIdFoyer(idFoyer: number) {
+    return this.http.get<Bloc[]>(`${environment.baseUrl}/bloc/getAllBlocsByIdFoyer/${idFoyer}`);
+  }
+
   getBlocById(idBloc: number) {
     return this.http.get<Bloc>(`${environment.baseUrl}/bloc/${idBloc}`);
   }

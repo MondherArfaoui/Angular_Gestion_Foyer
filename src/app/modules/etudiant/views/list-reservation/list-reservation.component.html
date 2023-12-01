@@ -1,1 +1,125 @@
-<p>list-reservation works!</p>
+<!-- Card START -->
+<div class="card border bg-transparent rounded-3">
+    <!-- Card header START -->
+    <div class="card-header bg-transparent d-sm-flex justify-content-sm-between align-items-center border-bottom">
+        <h3 class="mb-0">Liste des réservations</h3>
+        <a href="#" class="btn btn-sm btn-primary-soft mb-0" data-bs-toggle="modal" data-bs-target="#addNewcard">Ajouter réservation</a>
+    </div>
+    <!-- Card header END -->
+
+    <!-- Card body START -->
+    <div class="card-body">
+
+        <!-- Order list table START -->
+        <div class="table-responsive border-0"  *ngIf="reservation; else noReservations">
+            <!-- Table START -->
+            <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+                <!-- Table head -->
+                <thead>
+                    <tr>
+                        <th scope="col" class="border-0 rounded-start">Numéro de réservation</th>
+                        <th scope="col" class="border-0">Début de l'année universitaire</th>
+                        <th scope="col" class="border-0">Fin de l'année universitaire</th>
+                        <th scope="col" class="border-0">Confirmation</th>
+                        <th scope="col" class="border-0 rounded-end">Action</th>
+                    </tr>
+                </thead>
+
+                <!-- Table body START -->
+                <tbody>
+                    <!-- Table item -->
+                    <tr>
+                        <!-- Table data -->
+                        <td>
+                            <h6 class="table-responsive-title mt-2 mt-lg-0 mb-0">{{reservation.numReservation}}</h6>
+                        </td>
+
+                        <!-- Table data -->
+                        <td>
+                            <div class="table-responsive-title mt-2 mt-lg-0 mb-0">{{reservation.debutAnneeUniv}}</div>
+                        </td>
+
+                        <!-- Table data -->
+                        <td>
+                            <div class="table-responsive-title mt-2 mt-lg-0 mb-0">{{reservation.finAnneeUniv}}</div>
+                        </td>
+
+                        <!-- Table data -->
+                        <td>
+                            <div *ngIf="reservation.estValide; else enAttente">
+                              <span class="badge bg-success">Confirmer</span>
+                            </div>
+                            <ng-template #enAttente>
+                              <span class="badge bg-warning">En attente</span>
+                            </ng-template>
+                        </td>
+
+                        <!-- Table data -->
+                        <td>
+                            <div class="d-flex justify-content-center gap-3">
+                                <button type="submit" (click)="annulerReservation()" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Annuler réservation"><i class="fas fa-ban"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- Table body END -->
+            </table>
+            <!-- Table END -->
+        </div>
+        <!-- Order list table END -->
+        <!-- Pas de Réservations Template -->
+        <ng-template #noReservations>
+            <div class="alert alert-info container">Aucune réservation n'est disponible pour cette année universitaire.</div>
+        </ng-template>
+
+    </div>
+    <!-- Card body START -->
+</div>
+    <!--Card END  -->
+
+
+
+<!-- Popup modal for add card -->
+<div class="modal fade" id="addNewcard" tabindex="-1" aria-labelledby="addNewcardLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-dark">
+				<h5 class="modal-title text-white" id="addNewcardLabel">Ajouter réservation</h5>
+				<button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+			</div>
+			<div class="modal-body">
+				<form class="row text-start g-3">
+					
+					<!-- Card number -->
+					<div class="col-12">
+						<label class="form-label">Bloc <span class="text-danger">*</span></label>
+						<select class="border-0 bg-light rounded-end ps-1 form-select border-0 z-index-9" (change)="onBlocChange($event)">
+                            <option value="" disabled>Selectionner un bloc</option>
+                            <option *ngFor="let bloc of infoFoyerUniversiteChild.listBlocs" [value]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+                        </select>
+					</div>
+                    <!-- Card name -->
+					<div class="col-12">
+						<label class="form-label">Type du chambre <span class="text-danger">*</span></label>
+						<select class="border-0 bg-light rounded-end ps-1 form-select border-0 z-index-9" (change)="onTypeChange($event)">
+                            <option value="" disabled>Selectionner un type</option>
+                            <option *ngFor="let type of typesChambre" [value]="type">{{ type }}</option>
+                        </select>
+					</div>
+					<!-- Card name -->
+					<div class="col-12">
+						<label class="form-label">Chambre <span class="text-danger">*</span></label>
+						<select class="border-0 bg-light rounded-end ps-1 form-select border-0 z-index-9">
+                            <option *ngFor="let chambre of chambres" [value]="chambre.idChambre">{{ chambre.numeroChambre }}</option>
+                        </select>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" (click)="ajouterReservation()" data-bs-dismiss="modal" aria-label="Close" class="btn btn-success my-0">Ajouter</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<app-info-foyer-universite #infoFoyerUniversiteChild style="display: none;"></app-info-foyer-universite>

@@ -12,6 +12,7 @@ import { SignInComponent } from './home/views/sign-in/sign-in.component';
 import { SignUpComponent } from './home/views/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './home/views/forgot-password/forgot-password.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResetPasswordComponent } from './home/views/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     Error404Component,
     SignInComponent,
     SignUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

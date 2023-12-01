@@ -34,7 +34,7 @@
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
 				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="http://localhost:8089/users/files/{{userconnect.image}}" alt="avatar">
+					<img class="avatar-img rounded-circle" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="avatar">
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 					<!-- Profile info -->
@@ -42,7 +42,7 @@
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="http://localhost:8089/users/files/{{userconnect.image}}" alt="avatar">
+								<img class="avatar-img rounded-circle shadow" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="avatar">
 							</div>
 							<div>
 								<a class="h6" href="#">{{userconnect.nom}} {{userconnect.prenom}}</a>
@@ -105,7 +105,7 @@ Page Banner START -->
 						<!-- Avatar -->
 						<div class="col-auto mt-4 mt-md-0">
 							<div class="avatar avatar-xxl mt-n3">
-								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="http://localhost:8089/users/files/{{userconnect.image}}" alt="">
+								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="">
 							</div>
 						</div>
 						<!-- Profile info -->
@@ -156,8 +156,8 @@ Page content START -->
 							<!-- Dashboard menu -->
 							<div class="list-group list-group-dark list-group-borderless">
 								<a class="list-group-item" routerLink="etudiant-profile"><i class="fas fa-address-card fa-fw me-2"></i>Editer le profil</a>
-								<a class="list-group-item" routerLink="list-foyer"><i class="fas fa-city fa-fw me-2"></i>Liste des foyers</a>
-								<a class="list-group-item" routerLink="list-reservation"><i class="fas fa-window-restore fa-fw me-2"></i>Liste des réservations</a>
+								<a class="list-group-item" routerLink="infoFoyerUniversite"><i class="fas fa-city fa-fw me-2"></i>Infos université et foyer</a>
+								<a class="list-group-item" routerLink="list-reservation"><i class="fas fa-window-restore fa-fw me-2"></i>Réservations</a>
 								<a class="list-group-item text-danger bg-danger-soft-hover" (click)="logout()" routerLink="/home"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Se déconnecter</a>
 							</div>
 						</div>

@@ -26,6 +26,10 @@ export class UniversiteService {
     return this.http.get<Universite>(`${environment.baseUrl}/universite/${idUniversite}`);
   }
 
+  getUniversiteByIdEtudiant(idEtudiant: number) {
+    return this.http.get<Universite>(`${environment.baseUrl}/universite/getUniversiteByIdEtudiant/${idEtudiant}`);
+  }
+
   affecterFoyerAUniversite(idFoyer: number, nomUniversite: String) {
     return this.http.put(`${environment.baseUrl}/universite/affecterFoyer/${idFoyer}/${nomUniversite}`, null);
   }

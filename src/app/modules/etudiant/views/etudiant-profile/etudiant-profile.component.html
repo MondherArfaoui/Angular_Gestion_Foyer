@@ -7,65 +7,65 @@
     <!-- Card body START -->
     <div class="card-body">
         <!-- Form -->
-        <form class="row g-4">
+        <form class="row g-4" [formGroup]="updateForm" (ngSubmit)="updateEtudiant()">
 
             <!-- Profile picture -->
             <div class="col-12 justify-content-center align-items-center">
-                <label class="form-label">Profile picture</label>
+                <label class="form-label">Image de profil</label>
                 <div class="d-flex align-items-center">
                     <label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
                         <!-- Avatar place holder -->
                         <span class="avatar avatar-xl">
-                            <img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">
+                            <img id="uploadfile-1-preview"
+                                class="avatar-img rounded-circle border border-white border-3 shadow"
+                                src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="">
                         </span>
-                        <!-- Remove btn -->
-                        <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
                     </label>
                     <!-- Upload button -->
-                    <label class="btn btn-primary-soft mb-0" for="uploadfile-1">Change</label>
-                    <input id="uploadfile-1" class="form-control d-none" type="file">
+                    <input id="uploadfile-1" class="form-control d-none" type="file" name="image" (change)="handleFileInput($event)">
+                    <button class="btn btn-primary-soft mb-0" (click)="updateImgEtudiant()">Change</button>
                 </div>
             </div>
 
             <!-- Full name -->
-            <div class="col-12">
-                <label class="form-label">Full name</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" value="Lori" placeholder="First name">
-                    <input type="text" class="form-control" value="Stevens" placeholder="Last name">
-                </div>
+            <div class="col-md-6">
+                <label class="form-label">Nom</label>
+                <input class="form-control" type="text" formControlName="nom">
             </div>
 
-            <!-- Username -->
             <div class="col-md-6">
-                <label class="form-label">Username</label>
-                <div class="input-group">
-                    <span class="input-group-text">Eduport.com</span>
-                    <input type="text" class="form-control" value="loristev">
-                </div>
+                <label class="form-label">Prénom</label>
+                <input class="form-control" type="text" formControlName="prenom">
+            </div>
+
+            <!-- cin -->
+            <div class="col-md-6">
+                <label class="form-label">Carte d'identité nationale</label>
+                <input type="number" class="form-control" formControlName="cin" readonly>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Date de naissance</label>
+                <input class="form-control" type="date" formControlName="dateNaissance">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Université</label>
+                <select class="form-select" id="exampleInputEcole" formControlName="universite">
+                    <option *ngFor="let universite of listUniversite" [value]="universite.idUniversite">{{ universite.nomUniversite }}</option>
+                </select>
             </div>
 
             <!-- Email id -->
             <div class="col-md-6">
-                <label class="form-label">Email id</label>
-                <input class="form-control" type="email" value="example@gmail.com"  placeholder="Email">
+                <label class="form-label">Adresse e-mail</label>
+                <input class="form-control" type="email" formControlName="email">
             </div>
 
-            <!-- Phone number -->
-            <div class="col-md-6">
-                <label class="form-label">Phone number</label>
-                <input type="text" class="form-control" value="1234567890" placeholder="Phone number">
-            </div>
-
-            <!-- Location -->
-            <div class="col-md-6">
-                <label class="form-label">Location</label>
-                <input class="form-control" type="text" value="California">
-            </div>
 
             <!-- Save button -->
             <div class="d-sm-flex justify-content-end">
-                <button type="button" class="btn btn-primary mb-0">Save changes</button>
+                <button type="submit" class="btn btn-primary mb-0">Save changes</button>
             </div>
         </form>
     </div>
@@ -73,68 +73,31 @@
 </div>
 <!-- Edit profile END -->
 
-<div class="row g-4 mt-3">
-
-    <!-- EMail change START -->
-    <div class="col-lg-6">
-        <div class="card bg-transparent border rounded-3">
-            <!-- Card header -->
-            <div class="card-header bg-transparent border-bottom">
-                <h5 class="card-header-title mb-0">Update email</h5>
-            </div>
-            <!-- Card body -->
-            <div class="card-body">
-                <p>Your current email address is <span class="text-primary">example@gmail.com</span></p>
-                <!-- Email -->
-                <form>
-                    <label class="form-label">Enter your new email id</label>
-                    <input class="form-control" type="email" placeholder="Enter new email">
-                    <div class="d-flex justify-content-end mt-4">
-                        <button type="button" class="btn btn-primary mb-0">Update email</button>
-                    </div>
-                </form>
-            </div>
+<br><br>
+<!-- Password change START -->
+<div class="col-lg-12">
+    <div class="card border bg-transparent rounded-3">
+        <!-- Card header -->
+        <div class="card-header bg-transparent border-bottom">
+            <h5 class="card-header-title mb-0">Mettre à jour le mot de passe</h5>
         </div>
-    </div>
-    <!-- EMail change end -->
-
-    <!-- Password change START -->
-    <div class="col-lg-6">
-        <div class="card border bg-transparent rounded-3">
-            <!-- Card header -->
-            <div class="card-header bg-transparent border-bottom">
-                <h5 class="card-header-title mb-0">Update password</h5>
-            </div>
-            <!-- Card body START -->
-            <div class="card-body">
-                <!-- Current password -->
-                <div class="mb-3">
-                    <label class="form-label">Current password</label>
-                    <input class="form-control" type="password" placeholder="Enter current password">
-                </div>
-                <!-- New password -->
-                <div class="mb-3">
-                    <label class="form-label"> Enter new password</label>
-                    <div class="input-group">
-                        <input class="form-control" type="password" placeholder="Enter new password">
-                        <span class="input-group-text p-0 bg-transparent">
-                            <i class="far fa-eye cursor-pointer p-2 w-40px"></i>
-                        </span>
-                    </div>
-                    <div class="rounded mt-1" id="psw-strength"></div>
-                </div>
-                <!-- Confirm password -->
-                <div>
-                    <label class="form-label">Confirm new password</label>
-                    <input class="form-control" type="password" placeholder="Enter new password">
-                </div>
-                <!-- Button -->
-                <div class="d-flex justify-content-end mt-4">
-                    <button type="button" class="btn btn-primary mb-0">Change password</button>
+        <!-- Card body START -->
+        <form class="card-body" [formGroup]="updateForm" (ngSubmit)="updatePassword()">
+            <!-- New password -->
+            <div class="mb-3">
+                <label class="form-label" for="inputPassword5">Mot de passe</label>
+                <div class="input-group">
+                    <input class="form-control" type="password" placeholder="*********" id="inputPassword5" formControlName="password">
+                    <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"
+                        onclick="Changer()"><i class="far fa-eye cursor-pointer p-2 w-40px"></i></span>
                 </div>
             </div>
-            <!-- Card body END -->
-        </div>
+            <!-- Button -->
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn btn-primary mb-0">Changer le mot de passe</button>
+            </div>
+        </form>
+        <!-- Card body END -->
     </div>
-    <!-- Password change end -->
 </div>
+<!-- Password change end -->

@@ -30,4 +30,8 @@ export class ChambreService {
   getChambresParBlocEtType(idBloc: number, typeC: TypeChambre) {
     return this.http.get<Chambre[]>(`${environment.baseUrl}/chambre/getChambresParBlocEtType/${idBloc}/${typeC}`);
   }
+
+  getNombreChambresParBloc(idBloc: number) {
+    return this.http.get<number>(`${environment.baseUrl}/chambre/getNombreChambresParBloc/${idBloc}`);
+  }
 }

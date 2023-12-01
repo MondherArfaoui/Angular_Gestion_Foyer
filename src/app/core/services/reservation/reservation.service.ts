@@ -26,6 +26,10 @@ export class ReservationService {
     return this.http.get<Reservation>(`${environment.baseUrl}/reservation/${idReservation}`);
   }
 
+  getCurrentReservationByEtudiantId(idEtudiant: number) {
+    return this.http.get<Reservation>(`${environment.baseUrl}/reservation/getReservationsByEtudiantId/${idEtudiant}`);
+  }
+
   annulerReservation(cin: number) {
     return this.http.put(`${environment.baseUrl}/reservation/annulerReservation/${cin}`, null);
   }

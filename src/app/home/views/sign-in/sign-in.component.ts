@@ -48,13 +48,14 @@ export class SignInComponent {
         });
 
         localStorage.setItem('userconnect', JSON.stringify(res.userDetails));
-        localStorage.setItem('token', res.accessToken);
+        localStorage.setItem('accessToken', res.accessToken);
+        localStorage.setItem('refreshToken', res.refreshToken);
         localStorage.setItem("state", "0");
 
         if (res.userDetails.role === Role.ADMIN) {
-          this.router.navigateByUrl('/admin');
+          this.router.navigateByUrl('/admin/');
         } else {
-          this.router.navigateByUrl('/etudiant');
+          this.router.navigateByUrl('/etudiant/etudiant-profile');
         }
       }
     }, err => {

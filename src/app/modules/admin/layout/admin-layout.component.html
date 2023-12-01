@@ -17,12 +17,6 @@
     
                 <!-- Sidebar menu START -->
                 <ul class="navbar-nav flex-column" id="navbar-sidebar">
-                    
-                    <!-- Menu item 1 -->
-                    <li class="nav-item"><a href="admin-dashboard.html" class="nav-link active"><i class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
-                    
-                    <!-- Title -->
-                    <li class="nav-item ms-2 my-2">Pages</li>
     
                     <!-- menu item 2 -->
                     <li class="nav-item">
@@ -57,15 +51,6 @@
                         </ul>
                     </li>
                     
-                    <!-- Menu item 5 -->
-                    <li class="nav-item"> <a class="nav-link" href="admin-review.html"><i class="far fa-comment-dots fa-fw me-2"></i>Reviews</a></li>
-    
-                    <!-- Menu item 6 -->
-                    <li class="nav-item"> <a class="nav-link" href="admin-earning.html"><i class="far fa-chart-bar fa-fw me-2"></i>Earnings</a></li>
-    
-                    <!-- Menu item 7 -->
-                    <li class="nav-item"> <a class="nav-link" href="admin-setting.html"><i class="fas fa-user-cog fa-fw me-2"></i>Admin Settings</a></li>
-    
                     <!-- Menu item 8 -->
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#collapseauthentication" role="button" aria-expanded="false" aria-controls="collapseauthentication">
@@ -79,26 +64,16 @@
                             <li class="nav-item"> <a class="nav-link" href="admin-error-404.html">Error 404</a></li>
                         </ul>
                     </li>
-    
-                    <!-- Title -->
-                    <li class="nav-item ms-2 my-2">Documentation</li>
-    
-                    <!-- Menu item 9 -->
-                    <li class="nav-item"> <a class="nav-link" href="docs/index.html"><i class="far fa-clipboard fa-fw me-2"></i>Documentation</a></li>
-    
-                    <!-- Menu item 10 -->
-                    <li class="nav-item"> <a class="nav-link" href="docs/changelog.html"><i class="fas fa-sitemap fa-fw me-2"></i>Changelog</a></li>
+
                 </ul>
                 <!-- Sidebar menu end -->
     
                 <!-- Sidebar footer START -->
                 <div class="px-3 mt-auto pt-3">
                     <div class="d-flex align-items-center justify-content-between text-primary-hover">
-                            <a class="h5 mb-0 text-body" href="admin-setting.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
-                                <i class="bi bi-gear-fill"></i>
+                            <a class="h5 mb-0 text-body">
                             </a>
-                            <a class="h5 mb-0 text-body" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Home">
-                                <i class="bi bi-globe"></i>
+                            <a class="h5 mb-0 text-body">
                             </a>
                             <a class="h5 mb-0 text-body" href="sign-in.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Sign out">
                                 <i class="bi bi-power"></i>
@@ -160,7 +135,7 @@
                             <li class="nav-item ms-2 ms-md-3 dropdown">
                                 <!-- Avatar -->
                                 <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="avatar-img rounded-circle" src="http://localhost:8089/users/files/{{userconnect.image}}" alt="avatar">
+                                    <img class="avatar-img rounded-circle" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="avatar">
                                 </a>
     
                                 <!-- Profile dropdown START -->
@@ -170,7 +145,7 @@
                                         <div class="d-flex align-items-center">
                                             <!-- Avatar -->
                                             <div class="avatar me-3 mb-3">
-                                                <img class="avatar-img rounded-circle shadow" src="http://localhost:8089/users/files/{{userconnect.image}}" alt="avatar">
+                                                <img class="avatar-img rounded-circle shadow" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="avatar">
                                             </div>
                                             <div>
                                                 <a class="h6 mt-2 mt-sm-0" href="#">{{userconnect.nom}} {{userconnect.prenom}}</a>
@@ -178,10 +153,6 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li> <hr class="dropdown-divider"></li>
-                                    <!-- Links -->
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-                                    <li><a class="dropdown-item bg-danger-soft-hover" (click)="logout()" routerLink="/home"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
                                     <li> <hr class="dropdown-divider"></li>
     
                                     <!-- Dark mode options START -->

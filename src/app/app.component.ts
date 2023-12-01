@@ -15,8 +15,12 @@ export class AppComponent {
     this.loadScript('assets/vendor/purecounterjs/dist/purecounter_vanilla.js');
     this.loadScript('assets/vendor/apexcharts/js/apexcharts.min.js');
     this.loadScript('assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js');
+    this.loadScript('assets/vendor/choices/js/choices.min.js');
+    this.loadScript('assets/vendor/quill/js/quill.min.js');
+    this.loadScript('assets/vendor/stepper/js/bs-stepper.min.js');
     this.loadScript('assets/js/functions.js');
   }
+
 
   loadScript(src: string) {
     const script = document.createElement('script');

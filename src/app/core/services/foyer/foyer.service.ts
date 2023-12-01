@@ -30,6 +30,10 @@ export class FoyerService {
     return this.http.get<Foyer>(`${environment.baseUrl}/foyer/${idFoyer}`);
   }
 
+  getFoyerByIdEtudiant(idEtudiant: number) {
+    return this.http.get<Foyer>(`${environment.baseUrl}/foyer/getFoyerByIdEtudiant/${idEtudiant}`);
+  }
+
   deleteFoyer(idFoyer: number) {
     return this.http.delete(`${environment.baseUrl}/foyer/delete/${idFoyer}`);
   }

@@ -6,7 +6,7 @@ import { EtudiantRoutingModule } from './etudiant-routing.module';
 import { EtudiantLayoutComponent } from './layout/etudiant-layout.component';
 import { EtudiantProfileComponent } from './views/etudiant-profile/etudiant-profile.component';
 import { ListReservationComponent } from './views/list-reservation/list-reservation.component';
-import { ListFoyerComponent } from './views/list-foyer/list-foyer.component';
+import { InfoFoyerUniversiteComponent } from './views/info-foyer-universite/info-foyer-universite.component';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ListFoyerComponent } from './views/list-foyer/list-foyer.component';
     EtudiantLayoutComponent,
     EtudiantProfileComponent,
     ListReservationComponent,
-    ListFoyerComponent
+    InfoFoyerUniversiteComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,8 @@
+import { Universite } from "../universite/universite";
 import { User } from "../user/user";
 
 export class Etudiant extends User {
     cin!: number;
-    ecole!: string;
+    universite!: Universite;
     dateNaissance!: Date;
 }

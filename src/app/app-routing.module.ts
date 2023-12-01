@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './home/views/forgot-password/forgot-pas
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
 import { AuthEtudiantGuard } from './core/guards/etudiant/auth-etudiant.guard';
+import { ResetPasswordComponent } from './home/views/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  {path: 'resetpassword/:passwordResetToken',component:ResetPasswordComponent },
   { path: 'admin', canActivate:[AuthGuard , AuthAdminGuard], loadChildren:()=>import('./modules/admin/admin.module').then(x => x.AdminModule) },
   { path: 'etudiant', canActivate:[AuthGuard , AuthEtudiantGuard], loadChildren:()=>import('./modules/etudiant/etudiant.module').then(x => x.EtudiantModule) },
   { path: '**', component:Error404Component }

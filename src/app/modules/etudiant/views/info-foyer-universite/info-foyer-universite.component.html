@@ -1,0 +1,115 @@
+<!-- Card START -->
+<div class="card border bg-transparent rounded-3">
+    <!-- Card header START -->
+    <div class="card-header bg-transparent border-bottom">
+        <h3 class="mb-0">Informations sur l'université et le foyer associée</h3>
+    </div>
+    <!-- Card header END -->
+
+    	<!-- Personal information START -->
+			<div class="card-body">
+				<div class="card bg-transparent border rounded-3 h-100">
+
+					<!-- Card body START -->
+					<div class="card-body">
+
+						<!-- Information START -->
+						<div class="row">
+
+							<!-- Information item -->
+							<div class="col-md-6">
+								<ul class="list-group list-group-borderless">
+									<li class="list-group-item">
+										<span>Nom université:</span>
+										<span class="h6 mb-0">{{universite.nomUniversite}}</span>
+									</li>
+
+									<li class="list-group-item">
+										<span>Nom foyer:</span>
+										<span class="h6 mb-0">{{foyer.nomFoyer}}</span>
+									</li>
+								</ul>
+							</div>
+
+							<!-- Information item -->
+							<div class="col-md-6">
+								<ul class="list-group list-group-borderless">
+									<li class="list-group-item">
+										<span>Adresse université</span>
+										<span class="h6 mb-0">{{universite.adresse}}</span>
+									</li>
+
+									<li class="list-group-item">
+										<span>Capacité foyer:</span>
+										<span class="h6 mb-0">{{foyer.capaciteFoyer}} étudiants</span>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+						<!-- Information END -->
+					</div>
+					<!-- Card body END -->
+				</div>
+			</div>
+			<!-- Personal information END -->
+
+    <!-- Card body START -->
+    <div class="card-body">
+        
+        <div class="card bg-transparent border rounded-3 h-100">
+
+            <!-- Card header -->
+            <div class="card-header bg-light border-bottom">
+                <h5 class="card-header-title mb-0">Liste des blocs</h5>
+            </div>
+
+            <!-- Card body START -->
+            <div class="card-body">
+                <!-- Order list table START -->
+        <div class="table-responsive border-0">
+            <!-- Table START -->
+            <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+                <!-- Table head -->
+                <thead>
+                    <tr>
+                        <th scope="col" class="border-0 rounded-start">Nom du bloc</th>
+                        <th scope="col" class="border-0">Capacité du bloc</th>
+                        <th scope="col" class="border-0 rounded-end">Nombre du chambre associée</th>
+                    </tr>
+                </thead>
+
+                <!-- Table body START -->
+                <tbody *ngFor="let bloc of listBlocs">
+                    <!-- Table item -->
+                    <tr>
+                        <!-- Table data -->
+                        <td>
+                            <h6 class="table-responsive-title mt-2 mt-lg-0 mb-0">{{bloc.nomBloc}}</h6>
+                        </td>
+
+                        <!-- Table data -->
+                        <td class="text-center text-sm-start text-primary-hover">
+                            <div class="badge bg-black bg-opacity-10 text-orange">{{bloc.capaciteBloc}}</div>
+                        </td>
+
+                        <!-- Table data -->
+                        <td>
+                            <h6 class="table-responsive-title mt-2 mt-lg-0 mb-0">{{nombreChambres.get(bloc.idBloc)}} chambres</h6>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- Table body END -->
+            </table>
+            <!-- Table END -->
+        </div>
+        <!-- Order list table END -->
+            </div>
+        </div>
+
+        
+
+    </div>
+    <!-- Card body START -->
+</div>
+<!--Card END  -->
