@@ -1,1 +1,76 @@
 <p>list-chambre works!</p>
+
+<div class="container">
+  <!-- Content and button -->
+  <div class="d-sm-flex justify-content-sm-between align-items-center mb-4">
+    <h5 class="mb-2 mb-sm-0">
+      You have {{ chambres.length }} items of block disponible
+    </h5>
+  </div>
+
+  <div class="row g-3">
+    <!-- Card item START -->
+    <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let chambre of chambres">
+      <div class="card shadow">
+        <!-- Image -->
+        <img
+          [src]="getImageUrl(chambre.typeC)"
+          class="card-img-top"
+          alt="course image"
+        />
+        <div class="card-body pb-0">
+          <!-- Badge and favorite -->
+          <div class="d-flex justify-content-between mb-2">
+            <a
+              href="#"
+              class="badge bg-success bg-opacity-10 text-success d-inline-block d-flex justify-content-center align-items-center"
+            >
+              <!-- <strong>{{ chambre.blockName }}</strong> -->
+              <strong>{{ chambre.typeC }}</strong>
+            </a>
+            <button class="btn btn-success">
+              <i class="fas fa-plus"></i> Add
+            </button>
+          </div>
+          <!-- Title -->
+          <h5 class="card-title fw-normal">
+            <!-- <a href="#">{{ chambre.roomNumber }}</a> -->
+            <a href="#">Numéro de chambre : {{ chambre.numeroChambre }}</a>
+          </h5>
+          <!-- <p class="mb-2 text-truncate-2">{{ chambre.description }}</p> -->
+          <p class="mb-2 text-truncate-2">bloc : {{ chambre.bloc.nomBloc }}</p>
+          <!-- Rating star -->
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item me-0 small">
+              <!-- <li class="list-inline-item me-0 small" *ngFor="let star of chambre.idChambre"> -->
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+            </li>
+            <!-- </li> -->
+            <!-- <li class="list-inline-item ms-2 h6 fw-light mb-0">{{ chambre.averageRating }}/5.0</li> -->
+            <li class="list-inline-item ms-2 h6 fw-light mb-0">4.5/5.0</li>
+          </ul>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer pt-0 pb-3">
+          <hr />
+          <div class="d-flex justify-content-between">
+            <!-- <span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>{{ chambre.date }}</span> -->
+            <span class="h6 fw-light mb-0"
+              ><i class="far fa-clock text-danger me-2"></i
+              >{{ chambre.typeC }}</span
+            >
+            <!-- <span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i>{{ chambre.typeChambre }}</span> -->
+            <span class="h6 fw-light mb-0"
+              ><i class="fas fa-table text-orange me-2"></i
+              >{{ chambre.typeC }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card item END -->
+  </div>
+</div>
