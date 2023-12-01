@@ -7,6 +7,7 @@ import { EtudiantLayoutComponent } from './layout/etudiant-layout.component';
 import { EtudiantProfileComponent } from './views/etudiant-profile/etudiant-profile.component';
 import { ListReservationComponent } from './views/list-reservation/list-reservation.component';
 import { ListFoyerComponent } from './views/list-foyer/list-foyer.component';
+import { ListChambreComponent } from './views/list-chambre/list-chambre.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ListFoyerComponent } from './views/list-foyer/list-foyer.component';
     EtudiantLayoutComponent,
     EtudiantProfileComponent,
     ListReservationComponent,
-    ListFoyerComponent
+    ListFoyerComponent,
+    ListChambreComponent
   ],
   imports: [
     CommonModule,
