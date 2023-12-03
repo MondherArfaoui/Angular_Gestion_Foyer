@@ -9,7 +9,11 @@ import { ChambreService } from 'src/app/core/services/chambre/chambre.service';
 })
 export class ListChambreBlocComponent implements OnInit {
   chambres: any[] = [];
+  // chambres: Chambre[] = [];
   showAddRoomForm = false;
+  showUpdateRoomForm = false;
+  showRoomForm = false;
+
   selectedRoom: Partial<Chambre> | null = null; // Change here
 
 
@@ -29,6 +33,7 @@ export class ListChambreBlocComponent implements OnInit {
       }
     );
   }
+
   displayChambre(chambreId: number) {
     // Implement logic for displaying the room with ID: chambreId
     console.log(`Displaying chambre with ID: ${chambreId}`);
@@ -40,30 +45,47 @@ export class ListChambreBlocComponent implements OnInit {
   }
 
   updateChambre(chambreId: number) {
-    // Implement logic for updating the room with ID: chambreId
-    console.log(`Updating chambre with ID: ${chambreId}`);
+    this.showUpdateRoomForm = true;  // Set showRoomForm to true instead of showUpdateRoomForm
   }
 
 
   addChambre() {
     this.showAddRoomForm = true;
+    this.showUpdateRoomForm = false;
+    this.showRoomForm = false;
+
   }
 
   cancelAddChambre() {
     this.showAddRoomForm = false;
+    this.showUpdateRoomForm = false;
+    this.showRoomForm = false;
     this.selectedRoom = null;
   }
 
+
   viewChambreDetails(chambre: any) {
     this.selectedRoom = chambre;
-    this.showAddRoomForm = true;
-    // this.selectedRoom = this.selectedRoom || {};
-    console.log("this.selectedRoom  : ",this.selectedRoom)
+    this.showRoomForm = true;
+    this.showUpdateRoomForm = false;
+    this.showAddRoomForm = false;
+  }
+
+  updateChambreDetails(chambre: any) {
+    this.selectedRoom = chambre;
+    this.showUpdateRoomForm = true;
+    this.showRoomForm = false;
+    this.showAddRoomForm = false;
+
   }
 
   // Method to safely update selectedRoom properties
   updateSelectedRoom(property: keyof Chambre, value: any) {
+    // this.selectedRoom = value;
+    // this.showUpdateRoomForm = true;
+
     if (this.selectedRoom) {
+      this.showUpdateRoomForm = true;
       this.selectedRoom[property] = value;
     }
   }

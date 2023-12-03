@@ -16,23 +16,26 @@
         <td>{{ chambre.bloc.nomBloc }}</td>
         <td>{{ chambre.typeC }}</td>
         <td>
+          <!-- Details btn-->
           <i
             class="fas fa-eye me-2"
             title="Display"
             style="color: blue; cursor: pointer"
             (click)="viewChambreDetails(chambre)"
           ></i>
+          <!-- Delete btn-->
           <i
             class="fas fa-trash-alt me-2"
             title="Delete"
             style="color: red; cursor: pointer"
             (click)="deleteChambre(chambre.idChambre)"
           ></i>
+          <!-- Update btn-->
           <i
             class="fas fa-pencil-alt"
             title="Update"
             style="color: green; cursor: pointer"
-            (click)="updateChambre(chambre.idChambre)"
+            (click)="updateChambreDetails(chambre)"
           ></i>
         </td>
       </tr>
@@ -41,9 +44,43 @@
   <!-- Button to add a room -->
   <button class="btn btn-primary mt-3" (click)="addChambre()">Add Room</button>
 
-  <!-- Form to add/update a room -->
+  <!-- Form to show room -->
+  <div *ngIf="showRoomForm">
+    <h4>Show Room Details</h4>
+
+    <form>
+      <div class="mb-3">
+        <label for="roomNumber" class="form-label">Room Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="roomNumber"
+          name="roomNumber"
+          [ngModel]="selectedRoom?.numeroChambre"
+          (ngModelChange)="updateSelectedRoom('numeroChambre', $event)"
+          [value]="selectedRoom?.numeroChambre || '-'" />
+      </div>
+      <div class="mb-3">
+        <label for="blockName" class="form-label">Block Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="blockName"
+          name="blockName"
+          [ngModel]="selectedRoom?.typeC"
+          (ngModelChange)="updateSelectedRoom('typeC', $event)"
+          [value]="selectedRoom?.typeC || '-'" />
+      </div>
+
+      <!-- Add more form controls as needed -->
+
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelAddChambre()">Cancel</button>
+    </form>
+  </div>
+
   <div *ngIf="showAddRoomForm">
-    <h4>{{ selectedRoom ? "Room Details" : "Add Room" }}</h4>
+    <h4>Add New Room</h4>
 
     <form>
       <div class="mb-3">
@@ -82,4 +119,39 @@
       </button>
     </form>
   </div>
+
+  <div *ngIf="showUpdateRoomForm">
+    <h4>Update the Room Details</h4>
+
+    <form>
+      <div class="mb-3">
+        <label for="roomNumber" class="form-label">Room Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="roomNumber"
+          name="roomNumber"
+          [ngModel]="selectedRoom?.numeroChambre"
+          (ngModelChange)="updateSelectedRoom('numeroChambre', $event)"
+          [value]="selectedRoom?.numeroChambre || '-'" />
+      </div>
+      <div class="mb-3">
+        <label for="blockName" class="form-label">Block Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="blockName"
+          name="blockName"
+          [ngModel]="selectedRoom?.typeC"
+          (ngModelChange)="updateSelectedRoom('typeC', $event)"
+          [value]="selectedRoom?.typeC || '-'" />
+      </div>
+
+      <!-- Add more form controls as needed -->
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelAddChambre()">Cancel</button>
+    </form>
+
+  </div>
+
 </div>
