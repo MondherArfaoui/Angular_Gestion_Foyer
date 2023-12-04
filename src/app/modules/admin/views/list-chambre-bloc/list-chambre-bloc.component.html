@@ -1,4 +1,5 @@
 <div class="table-container">
+  <!-- Table view -->
   <table class="table">
     <thead>
       <tr>
@@ -41,48 +42,15 @@
       </tr>
     </tbody>
   </table>
+
   <!-- Button to add a room -->
   <button class="btn btn-primary mt-3" (click)="addChambre()">Add Room</button>
 
   <!-- Form to show room -->
   <div *ngIf="showRoomForm">
     <h4>Show Room Details</h4>
-
     <form>
-      <div class="mb-3">
-        <label for="roomNumber" class="form-label">Room Number</label>
-        <input
-          type="text"
-          class="form-control"
-          id="roomNumber"
-          name="roomNumber"
-          [ngModel]="selectedRoom?.numeroChambre"
-          (ngModelChange)="updateSelectedRoom('numeroChambre', $event)"
-          [value]="selectedRoom?.numeroChambre || '-'" />
-      </div>
-      <div class="mb-3">
-        <label for="blockName" class="form-label">Block Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="blockName"
-          name="blockName"
-          [ngModel]="selectedRoom?.typeC"
-          (ngModelChange)="updateSelectedRoom('typeC', $event)"
-          [value]="selectedRoom?.typeC || '-'" />
-      </div>
-
-      <!-- Add more form controls as needed -->
-
-      <button type="submit" class="btn btn-success">Update</button>
-      <button type="button" class="btn btn-secondary ms-2" (click)="cancelAddChambre()">Cancel</button>
-    </form>
-  </div>
-
-  <div *ngIf="showAddRoomForm">
-    <h4>Add New Room</h4>
-
-    <form>
+      <!-- roomNumber -->
       <div class="mb-3">
         <label for="roomNumber" class="form-label">Room Number</label>
         <input
@@ -90,26 +58,50 @@
           class="form-control"
           id="roomNumber"
           [(ngModel)]="selectedRoom!.numeroChambre"
-          (ngModelChange)="updateSelectedRoom('numeroChambre', $event)"
           [value]="selectedRoom?.numeroChambre || '-'"
-
+          name="roomNumber"
+          readonly
         />
       </div>
+      <!-- TypeC -->
       <div class="mb-3">
-        <label for="roomNumber" class="form-label">Block Name</label>
-        <input
-          type="text"
+        <label for="typeC" class="form-label">Type</label>
+        <select
           class="form-control"
           id="typeC"
-          [ngModel]="selectedRoom?.typeC"
-          (ngModelChange)="updateSelectedRoom('typeC', $event)"
-          [value]="selectedRoom?.typeC || '-'"
-        />
+          name="typeC"
+          [(ngModel)]="selectedRoom!.typeC"
+          readonly
+        >
+          <option *ngFor="let type of typeChambreEnum" [value]="type">
+            {{ type }}
+          </option>
+        </select>
       </div>
 
-      <!-- Add more form controls as needed -->
-
-      <button type="submit" class="btn btn-success">Update</button>
+      <!-- blockName -->
+      <div class="mb-3">
+        <label for="blockName" class="form-label">Block Name</label>
+        <select
+          class="form-control"
+          id="blockName"
+          name="blockName"
+          [(ngModel)]="selectedRoom!.bloc!.nomBloc"
+          readonly
+        >
+          <option
+            *ngFor="let block of blocks"
+            [ngValue]="block.nomBloc"
+            [attr.selected]="
+              block.nomBloc === selectedRoom?.bloc?.nomBloc ? true : null
+            "
+            readonly
+          >
+            {{ block.nomBloc }}
+          </option>
+        </select>
+      </div>
+      <!-- btn -->
       <button
         type="button"
         class="btn btn-secondary ms-2"
@@ -120,38 +112,131 @@
     </form>
   </div>
 
+  <!-- Add Room -->
+  <div *ngIf="showAddRoomForm">
+    <h4>Add New Room</h4>
+
+    <form (ngSubmit)="addChambre()">
+      <!-- roomNumber -->
+      <div class="mb-3">
+        <label for="roomNumber" class="form-label">Room Number</label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            class="form-control"
+            id="roomNumber"
+            [(ngModel)]="newRoom.numeroChambre"
+            name="roomNumber"
+          />
+        </div>
+      </div>
+      <!-- TypeC -->
+      <div class="mb-3">
+        <label for="typeC" class="form-label">Type</label>
+
+        <div class="col-sm-2">
+          <select
+            class="form-control"
+            id="typeC"
+            name="typeC"
+            [(ngModel)]="newRoom.typeC"
+          >
+            <option *ngFor="let type of typeChambreEnum" [value]="type">
+              {{ type }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- blockName -->
+      <div class="mb-3">
+        <label for="blockName" class="form-label">Block Name</label>
+
+        <div class="col-sm-2">
+          <select
+            class="form-control"
+            id="blockName"
+            name="blockName"
+            [(ngModel)]="newRoom.bloc"
+          >
+            <option *ngFor="let block of blocks" [ngValue]="block">
+              {{ block.nomBloc }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- btn -->
+      <button type="submit" class="btn btn-success">Add</button>
+      <button
+        type="button"
+        class="btn btn-secondary ms-2"
+        (click)="cancelAddChambre()"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+
+  <!-- update Room -->
   <div *ngIf="showUpdateRoomForm">
     <h4>Update the Room Details</h4>
 
-    <form>
+    <form (submit)="updateRoom()">
+      <!-- roomNumber -->
       <div class="mb-3">
         <label for="roomNumber" class="form-label">Room Number</label>
         <input
           type="text"
           class="form-control"
           id="roomNumber"
+          [(ngModel)]="selectedRoom!.numeroChambre"
+          [value]="selectedRoom?.numeroChambre || '-'"
           name="roomNumber"
-          [ngModel]="selectedRoom?.numeroChambre"
-          (ngModelChange)="updateSelectedRoom('numeroChambre', $event)"
-          [value]="selectedRoom?.numeroChambre || '-'" />
+        />
       </div>
+      <!-- TypeC -->
+      <div class="mb-3">
+        <label for="typeC" class="form-label">Type</label>
+        <select
+          class="form-control"
+          id="typeC"
+          name="typeC"
+          [(ngModel)]="selectedRoom!.typeC"
+        >
+          <option *ngFor="let type of typeChambreEnum" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+
+      <!-- blockName -->
       <div class="mb-3">
         <label for="blockName" class="form-label">Block Name</label>
-        <input
-          type="text"
+        <select
           class="form-control"
           id="blockName"
           name="blockName"
-          [ngModel]="selectedRoom?.typeC"
-          (ngModelChange)="updateSelectedRoom('typeC', $event)"
-          [value]="selectedRoom?.typeC || '-'" />
+          [(ngModel)]="selectedRoom!.bloc!.nomBloc"
+        >
+          <option
+            *ngFor="let block of blocks"
+            [ngValue]="block.nomBloc"
+            [attr.selected]="
+              block.nomBloc === selectedRoom?.bloc?.nomBloc ? true : null
+            "
+          >
+            {{ block.nomBloc }}
+          </option>
+        </select>
       </div>
-
-      <!-- Add more form controls as needed -->
+      <!-- btn -->
       <button type="submit" class="btn btn-success">Update</button>
-      <button type="button" class="btn btn-secondary ms-2" (click)="cancelAddChambre()">Cancel</button>
+      <button
+        type="button"
+        class="btn btn-secondary ms-2"
+        (click)="cancelAddChambre()"
+      >
+        Cancel
+      </button>
     </form>
-
   </div>
-
 </div>
