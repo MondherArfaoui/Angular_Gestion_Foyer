@@ -15,7 +15,7 @@ export class ChambreService {
     return this.http.post(`${environment.baseUrl}/chambre/add`, chambre);
   }
 
-  updateChambre(chambre: Chambre) {
+  updateChambre(chambre: any) {
     return this.http.put(`${environment.baseUrl}/chambre/update`, chambre);
   }
 
@@ -29,5 +29,9 @@ export class ChambreService {
 
   getChambresParBlocEtType(idBloc: number, typeC: TypeChambre) {
     return this.http.get<Chambre[]>(`${environment.baseUrl}/chambre/getChambresParBlocEtType/${idBloc}/${typeC}`);
+  }
+
+  deleteChambre(idChambre:number){
+    return this.http.delete(`${environment.baseUrl}/chambre/delete/${idChambre}`);
   }
 }
