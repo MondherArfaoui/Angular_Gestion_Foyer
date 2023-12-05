@@ -14,9 +14,11 @@ const routes: Routes = [
     { path: 'list-foyer', component: ListFoyerComponent },
     { path: 'list-university', component: ListReservationComponent },
     { path: 'list-bloc-foyer', component: ListBlocFoyerComponent },
-    { path: 'list-chambre-bloc', component: ListChambreBlocComponent },
+    // {path:  'list-chambre',loadChildren:()=>import('./views/chambre/chambre.module').then(m=>m.ChambreModule)},
     { path: 'list-reservation', component: ListReservationComponent },
-    { path: 'list-etudiant', component: ListEtudiantComponent}
+    { path: 'list-etudiant', component: ListEtudiantComponent},
+    { path: 'chambre', loadChildren: () => import('./views/chambre/chambre.module').then(m => m.ChambreModule) }
+
   ] }
 ];
 
