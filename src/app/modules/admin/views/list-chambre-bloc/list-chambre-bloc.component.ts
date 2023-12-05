@@ -20,11 +20,9 @@ interface SelectedRoom {
 })
 export class ListChambreBlocComponent implements OnInit {
   chambres: any[] = [];
-  showAddRoomForm = false;
   showAddRoomFormModel = false;
   showUpdateRoomForm = false;
   showUpdateRoomFormModel = false;
-  showRoomForm = false;
   showRoomFormModel=false;
 
   selectedRoom: SelectedRoom | null = null;
@@ -76,6 +74,7 @@ export class ListChambreBlocComponent implements OnInit {
   closeUpdateRoomModal() {
     this.showUpdateRoomFormModel = false;
     this.modalService.dismissAll();
+    window.location.reload()
   }
   closeShowRoomModal() {
     this.showRoomFormModel = false;
@@ -124,15 +123,10 @@ export class ListChambreBlocComponent implements OnInit {
   }
 
   addChambre() {
-    this.showAddRoomForm = true;
-    this.showUpdateRoomForm = false;
-    this.showRoomForm = false;
-
     this.chambreService.addChambre(this.newRoom).subscribe(
       (response) => {
         console.log('Room added successfully', response);
         this.loadChambres();
-        this.cancelAddChambre();
         this.newRoom = {
           numeroChambre: 0,
           typeC: this.typeChambreEnum[0],
@@ -146,20 +140,6 @@ export class ListChambreBlocComponent implements OnInit {
       }
     );
 
-  }
-
-  viewChambreDetails(chambre: any) {
-    this.selectedRoom = chambre;
-    this.showRoomForm = true;
-    this.showUpdateRoomForm = false;
-    this.showAddRoomForm = false;
-  }
-
-  updateChambreDetails(chambre: any) {
-    this.selectedRoom = chambre;
-    this.showUpdateRoomForm = true;
-    this.showRoomForm = false;
-    this.showAddRoomForm = false;
   }
 
   updateRoom() {
@@ -199,11 +179,5 @@ export class ListChambreBlocComponent implements OnInit {
     }
   }
 
-  cancelAddChambre() {
-    this.showAddRoomForm = false;
-    this.showUpdateRoomForm = false;
-    this.showRoomForm = false;
-    this.selectedRoom = null;
-  }
 
 }
