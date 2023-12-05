@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Bloc } from 'src/app/core/models/bloc/bloc';
 import { Chambre } from 'src/app/core/models/chambre/chambre';
 import { TypeChambre } from 'src/app/core/models/TypeChambre/type-chambre.enum';
@@ -19,10 +20,12 @@ interface SelectedRoom {
 })
 export class ListChambreBlocComponent implements OnInit {
   chambres: any[] = [];
-  // chambres: Chambre[] = [];
   showAddRoomForm = false;
+  showAddRoomFormModel = false;
   showUpdateRoomForm = false;
+  showUpdateRoomFormModel = false;
   showRoomForm = false;
+  showRoomFormModel=false;
 
   selectedRoom: SelectedRoom | null = null;
 
@@ -36,15 +39,47 @@ export class ListChambreBlocComponent implements OnInit {
     bloc: new Bloc()
   };
 
-
-
+  modalOptions: NgbModalOptions = {
+    centered: true,
+    size: 'sm', // the size can be (sm, md, lg, xl)
+  };
 
   constructor(private chambreService: ChambreService,
-    private blocService: BlocService,) { }
+    private blocService: BlocService,
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
     this.loadChambres();
     this.loadBlocs();
+  }
+
+  openShowRoomModal(content: any, chambre: any) {
+    this.selectedRoom = chambre;
+    this.modalService.open(content, this.modalOptions);
+  }
+
+  openAddRoomModal(content: any) {
+    this.showAddRoomFormModel = true;
+    this.modalService.open(content, this.modalOptions);
+  }
+
+  openUpdateRoomModal(content: any, chambre: any) {
+    this.selectedRoom = chambre;
+    this.modalService.open(content, this.modalOptions);
+  }
+
+  closeAddRoomModal() {
+    this.showAddRoomFormModel = false;
+    this.modalService.dismissAll();
+  }
+  closeUpdateRoomModal() {
+    this.showUpdateRoomFormModel = false;
+    this.modalService.dismissAll();
+  }
+  closeShowRoomModal() {
+    this.showRoomFormModel = false;
+    this.modalService.dismissAll();
   }
 
   loadChambres() {
@@ -53,7 +88,7 @@ export class ListChambreBlocComponent implements OnInit {
         this.chambres = data;
       },
       (error) => {
-        console.error('Error fetching chambres', error);
+        console.error('Error fetching room', error);
       }
     );
   }
@@ -67,9 +102,6 @@ export class ListChambreBlocComponent implements OnInit {
         console.error('Error fetching bloc', error);
       }
     )
-  }
-
-  displayChambre(chambreId: number) {
   }
 
   deleteChambre(chambreId: number) {
@@ -91,11 +123,6 @@ export class ListChambreBlocComponent implements OnInit {
     );
   }
 
-  updateChambre(chambreId: number) {
-    this.showUpdateRoomForm = true;  // Set showRoomForm to true instead of showUpdateRoomForm
-  }
-
-
   addChambre() {
     this.showAddRoomForm = true;
     this.showUpdateRoomForm = false;
@@ -111,6 +138,7 @@ export class ListChambreBlocComponent implements OnInit {
           typeC: this.typeChambreEnum[0],
           bloc: new Bloc()
         };
+        this.closeAddRoomModal()
 
       },
       (error) => {
@@ -133,6 +161,7 @@ export class ListChambreBlocComponent implements OnInit {
     this.showRoomForm = false;
     this.showAddRoomForm = false;
   }
+
   updateRoom() {
 
     if (!this.selectedRoom) {
@@ -140,13 +169,12 @@ export class ListChambreBlocComponent implements OnInit {
     }
 
     const updatedRoom = {
-      idChambre: this.selectedRoom.idChambre ?? 0,  // Provide a default value, adjust as needed
+      idChambre: this.selectedRoom.idChambre ?? 0,
       numeroChambre: this.selectedRoom.numeroChambre ?? '',
-      typeC: this.selectedRoom.typeC ?? TypeChambre,  // Provide a default value, adjust as needed
+      typeC: this.selectedRoom.typeC ?? TypeChambre,
       bloc: {
-        idBloc: this.selectedRoom.bloc?.idBloc ?? 0,  // Use optional chaining to handle potential null or undefined
+        idBloc: this.selectedRoom.bloc?.idBloc ?? 0,
         nomBloc: this.selectedRoom.bloc?.nomBloc ?? '',
-        // add other properties if needed
       },
     };
 
@@ -154,7 +182,7 @@ export class ListChambreBlocComponent implements OnInit {
       (response) => {
         console.log(`Room with ID ${this.selectedRoom!.idChambre} updated successfully`, response);
         this.loadChambres();
-        this.cancelAddChambre();
+        this.closeUpdateRoomModal();
       },
       (error) => {
         console.error(`Error updating room with ID ${this.selectedRoom!.idChambre}`, error);
@@ -165,9 +193,6 @@ export class ListChambreBlocComponent implements OnInit {
   }
 
   updateSelectedRoom(property: keyof Chambre, value: any) {
-    // this.selectedRoom = value;
-    // this.showUpdateRoomForm = true;
-
     if (this.selectedRoom) {
       this.showUpdateRoomForm = true;
       this.selectedRoom[property] = value;

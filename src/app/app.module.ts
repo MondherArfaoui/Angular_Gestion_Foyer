@@ -12,6 +12,7 @@ import { SignInComponent } from './home/views/sign-in/sign-in.component';
 import { SignUpComponent } from './home/views/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './home/views/forgot-password/forgot-password.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
-    EtudiantModule
+    EtudiantModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,11 @@
 /* Add your existing styles if any */
 
 .table-container {
-  margin: 20px auto; /* Adjust margin as needed */
-  max-width: 80%; /* Adjust the maximum width as needed */
+  margin: 20px auto;
+  max-width: 80%;
 }
 
-/* Add more styles as needed */
+.content-centered .modal-content {
+  max-width: 80vw;
+  max-height: 80vh;
+}
