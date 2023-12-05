@@ -5,7 +5,7 @@ import { AdminLayoutComponent } from './layout/admin-layout.component';
 import { ListFoyerComponent } from './views/list-foyer/list-foyer.component';
 import { ListReservationComponent } from './views/list-reservation/list-reservation.component';
 import { ListBlocFoyerComponent } from './views/list-bloc-foyer/list-bloc-foyer.component';
-import { ListChambreBlocComponent } from './views/list-chambre-bloc/list-chambre-bloc.component';
+import { ListChambreBlocComponent } from './views/chambre/list-chambre-bloc/list-chambre-bloc.component';
 import { ListEtudiantComponent } from './views/list-etudiant/list-etudiant.component';
 
 const routes: Routes = [
