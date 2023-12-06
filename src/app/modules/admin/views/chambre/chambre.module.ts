@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChambreRoutingModule } from './chambre-routing.module';
+import { AddChambreBlocComponent } from './add-chambre-bloc/add-chambre-bloc.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AddChambreBlocComponent
+  ],
   imports: [
     CommonModule,
-    ChambreRoutingModule
+    ChambreRoutingModule,
+    FormsModule
   ]
 })
 export class ChambreModule { }
