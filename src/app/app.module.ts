@@ -22,7 +22,8 @@ import { ResetPasswordComponent } from './home/views/reset-password/reset-passwo
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+
   ],
   imports: [
     BrowserModule,

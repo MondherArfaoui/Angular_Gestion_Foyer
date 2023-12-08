@@ -37,4 +37,8 @@ export class UniversiteService {
   desaffecterFoyerAUniversite(idUniversite: number) {
     return this.http.put(`${environment.baseUrl}/universite/desaffecterFoyer/${idUniversite}`, null);
   }
+
+  deleteUniversite(idUniversite: number) {
+    return this.http.delete(`${environment.baseUrl}/universite/delete/${idUniversite}`);
+  }
 }
