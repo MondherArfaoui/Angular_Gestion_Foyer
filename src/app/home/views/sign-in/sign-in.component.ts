@@ -53,7 +53,7 @@ export class SignInComponent {
         localStorage.setItem("state", "0");
 
         if (res.userDetails.role === Role.ADMIN) {
-          this.router.navigateByUrl('/admin/list-etudiant');
+          this.router.navigateByUrl('/admin/');
         } else {
           this.router.navigateByUrl('/etudiant/etudiant-profile');
         }

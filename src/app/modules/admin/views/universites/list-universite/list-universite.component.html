@@ -1,0 +1,104 @@
+<div id="content" #content> 
+    <div class="container">
+        <h2 class="title">
+            <span class="title-word title-word-1">Liste</span>
+            <span>&nbsp;</span>
+            <span class="title-word title-word-2">Des</span>
+            <span>&nbsp;</span>
+            <span class="title-word title-word-3">universites</span>
+            <span>&nbsp;</span>
+            <span class="title-word title-word-4">Disponibles</span>
+            <span>&nbsp;</span>
+          </h2>
+          
+    <div class="input-group rounded">
+        <input
+            type="search"
+            [(ngModel)]="searchValue"
+            (input)="onSearchTextChanged()"
+            class="form-control rounded search-input"
+            placeholder="Search"
+            aria-label="Search"
+          
+           
+        />
+       
+
+       
+    </div>
+
+    <a class="btn btn-sm btn-warning" (click)="toadd()">
+        <i class="bi bi-plus"></i> Add Universite
+      </a>
+      
+    
+    <select (change)="onTableSizeChange($event)">
+        <option *ngFor="let size of tableSizes">
+            {{size}}
+        </option>
+    </select>
+    
+      
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom Universite</th>
+                <th>Adresse</th>
+                <th>Action</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of filteredUniversities | paginate : {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                };
+                let i = index"
+            >
+                <td>{{u.idUniversite}}</td>
+                <td>{{u.nomUniversite}}</td>
+                <td [ngStyle]="{
+                    'color': u.adresse === 'Tunis' ? '#71BC75' : (u.adresse === 'Sousse' ? 'blue' : (u.adresse === 'Sfax' ? '#D2B48C' : '#550F00'))
+                  }">{{ u.adresse }}</td>
+                  
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="deleteUniv(u.idUniversite)">
+                        <i class="bi bi-trash"></i> delete
+                    </button>
+                    &nbsp;
+                    <a class="btn btn-sm btn-warning" (click)="updateUniversite(u.idUniversite)" >
+                        <i class="bi bi-pencil"></i> update  
+                    </a>
+                    &nbsp;
+                    <a routerLink="/admin/universite//AffecterF/{{ u.idUniversite }}" class="btn btn-success btn-sm" style="text-decoration: none; padding: 5px 10px;">
+                        <i class="bi bi-house-door"></i> Affect Foyer
+                      </a>
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      <a routerLink="/admin/universite/list" class="btn btn-sm btn-primary" style="text-decoration: none; padding: 5px 10px;">
+                        <i class="bi bi-eye"></i> Show more Details
+                      </a>
+                </td>
+                
+                  
+
+            </tr>
+        </tbody>
+    </table>
+    <div>
+      <pagination-controls
+        previousLabel="prev"
+        nextLabel="next"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+    </div>
+</div>
+
+</div>
+
+            

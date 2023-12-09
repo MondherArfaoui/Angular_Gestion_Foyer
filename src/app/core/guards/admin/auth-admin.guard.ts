@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Role } from '../../models/Role/role.enum';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthAdminGuard implements CanActivate {
+export class AuthAdminGuard  {
 
   userconnect = JSON.parse(localStorage.getItem("userconnect")!);
 

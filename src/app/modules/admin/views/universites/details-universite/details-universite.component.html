@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="title text-center">
+    <span class="title-word title-word-1">Details</span>
+    <span>&nbsp;</span>
+    <span class="title-word title-word-2">Des</span>
+    <span>&nbsp;</span>
+    <span class="title-word title-word-3">universites</span>
+    <span>&nbsp;</span>
+    <span class="title-word title-word-4">Disponibles</span>
+  </h2>
+  <div class="alert alert-danger text-center">
+    <a routerLink="/universites/universite" class="alert-link">More details</a>
+  </div>
+</div>
+
+
+
+<form class="col-md-6">
+  <!-- Your form content goes here -->
+</form>
+
+<br>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-xl-4" *ngFor="let univ of Universites">
+    <div *ngIf="searchText === '' || univ.adresse.toLowerCase().includes(searchText)">
+      <div class="card border-primary mb-3" style="max-width: 18rem; background-color: #e6f7ff; border-color: #007bff;">
+        <div class="card-header bg-primary text-white text-center" style="font-family: 'Arial', sans-serif;">
+          <span style="font-weight: bold; text-decoration: underline; color: #fff;">Nom Universite:</span>
+          {{ univ.nomUniversite }}
+        </div>
+        <div class="card-body text-primary">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted text-center" style="font-family: 'Arial', sans-serif;">
+              <span style="font-weight: bold; text-decoration: underline; color: #007bff;">Adresse:</span>
+              {{ univ.adresse }}
+            </h6>
+            <hr>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-eye" viewBox="0 0 16 16">
+              <!-- SVG paths remain unchanged -->
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

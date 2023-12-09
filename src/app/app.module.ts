@@ -13,6 +13,13 @@ import { SignUpComponent } from './home/views/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './home/views/forgot-password/forgot-password.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResetPasswordComponent } from './home/views/reset-password/reset-password.component';
+import { UniversiteModule } from './modules/admin/views/universites/universite/universite.module';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +30,11 @@ import { ResetPasswordComponent } from './home/views/reset-password/reset-passwo
     SignUpComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-
+   
+  
+    
+  
+   
   ],
   imports: [
     BrowserModule,
@@ -32,7 +43,10 @@ import { ResetPasswordComponent } from './home/views/reset-password/reset-passwo
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
-    EtudiantModule
+    EtudiantModule,
+    UniversiteModule,
+  
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

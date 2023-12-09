@@ -18,17 +18,53 @@
                 <!-- Sidebar menu START -->
                 <ul class="navbar-nav flex-column" id="navbar-sidebar">
     
-                    <!-- Menu item 3 -->
-                    <li class="nav-item"> <a class="nav-link" routerLink="list-etudiant"><i class="fas fa-user-graduate fa-fw me-2"></i>Étudiants</a></li>
+                    <!-- menu item 2 -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#collapsepage" role="button" aria-expanded="false" aria-controls="collapsepage">
+                            <i class="bi bi-basket fa-fw me-2"></i>Courses
+                        </a>
+                        <!-- Submenu -->
+                        <ul class="nav collapse flex-column" id="collapsepage" data-bs-parent="#navbar-sidebar">
+                            <li class="nav-item"> <a class="nav-link" href="admin-course-list.html">All Courses</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="admin-course-category.html">Course Category</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="admin-course-detail.html">Course Detail</a></li>
+                        </ul>
+                    </li>
     
                     <!-- Menu item 3 -->
-                    <li class="nav-item"> <a class="nav-link" routerLink="list-university"><i class="fas fa-university fa-fw me-2"></i>Universités</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin-student-list.html"><i class="fas fa-user-graduate fa-fw me-2"></i>Students</a></li>
+    
+                    <!-- Menu item 4 -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#collapseinstructors" role="button" aria-expanded="false" aria-controls="collapseinstructors">
+                            <i class="fas fa-user-tie fa-fw me-2"></i>Instructors
+                        </a>
+                        <!-- Submenu -->
+                        <ul class="nav collapse flex-column" id="collapseinstructors" data-bs-parent="#navbar-sidebar">
+                            <li class="nav-item"> <a class="nav-link" href="admin-instructor-list.html">Instructors</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="admin-instructor-detail.html">Instructor Detail</a></li>
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="admin-instructor-request.html">Instructor requests
+                                    <span class="badge text-bg-success rounded-circle ms-2">2</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Menu item 8 -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#collapseauthentication" role="button" aria-expanded="false" aria-controls="collapseauthentication">
+                            <i class="bi bi-lock fa-fw me-2"></i>Authentication
+                        </a>
+                        <!-- Submenu -->
+                        <ul class="nav collapse flex-column" id="collapseauthentication" data-bs-parent="#navbar-sidebar">
+                            <li class="nav-item"> <a class="nav-link" href="sign-up.html">Sign Up</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="sign-in.html">Sign In</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="forgot-password.html">Forgot Password</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="admin-error-404.html">Error 404</a></li>
+                        </ul>
+                    </li>
 
-                    <!-- Menu item 3 -->
-                    <li class="nav-item"> <a class="nav-link" routerLink="list-foyer"><i class="fas fa-city fa-fw me-2"></i>Foyers</a></li>
-
-                    <!-- Menu item 3 -->
-                    <li class="nav-item"> <a class="nav-link" routerLink="list-reservation"><i class="fas fa-window-restore fa-fw me-2"></i>Réservations</a></li>
                 </ul>
                 <!-- Sidebar menu end -->
     
@@ -39,7 +75,7 @@
                             </a>
                             <a class="h5 mb-0 text-body">
                             </a>
-                            <a class="h5 mb-0 text-body"  (click)="logout()" routerLink="/home" data-bs-toggle="tooltip" data-bs-placement="top" title="Se déconnecter">
+                            <a class="h5 mb-0 text-body" href="sign-in.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Sign out">
                                 <i class="bi bi-power"></i>
                             </a>
                     </div>
@@ -99,7 +135,7 @@
                             <li class="nav-item ms-2 ms-md-3 dropdown">
                                 <!-- Avatar -->
                                 <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="avatar-img rounded-circle" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="avatar">
+                                    <img class="avatar-img rounded-circle" src="" alt="avatar">
                                 </a>
     
                                 <!-- Profile dropdown START -->
@@ -109,11 +145,11 @@
                                         <div class="d-flex align-items-center">
                                             <!-- Avatar -->
                                             <div class="avatar me-3 mb-3">
-                                                <img class="avatar-img rounded-circle shadow" src="http://localhost:8089/GestionFoyer/auth/{{userconnect.image}}" alt="avatar">
+                                                <img class="avatar-img rounded-circle shadow" src="" alt="avatar">
                                             </div>
                                             <div>
-                                                <a class="h6 mt-2 mt-sm-0" href="#">{{userconnect.nom}} {{userconnect.prenom}}</a>
-                                                <p class="small m-0">{{userconnect.email}}</p>
+                                                <a class="h6 mt-2 mt-sm-0" href="#"></a>
+                                                <p class="small m-0"></p>
                                             </div>
                                         </div>
                                     </li>

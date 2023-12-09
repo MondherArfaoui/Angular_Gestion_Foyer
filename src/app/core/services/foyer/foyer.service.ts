@@ -26,20 +26,12 @@ export class FoyerService {
     return this.http.get<Foyer[]>(`${environment.baseUrl}/foyer/all`);
   }
 
-  getFoyersWithoutUniversite() {
-    return this.http.get<Foyer[]>(`${environment.baseUrl}/foyer/getFoyersWithoutUniversite`);
-  }
-
   getFoyerById(idFoyer: number) {
     return this.http.get<Foyer>(`${environment.baseUrl}/foyer/${idFoyer}`);
   }
 
   getFoyerByIdEtudiant(idEtudiant: number) {
     return this.http.get<Foyer>(`${environment.baseUrl}/foyer/getFoyerByIdEtudiant/${idEtudiant}`);
-  }
-
-  getFoyerByIdUniversite(idUniversite: number) {
-    return this.http.get<Foyer>(`${environment.baseUrl}/foyer/getFoyerByIdUniversite/${idUniversite}`);
   }
 
   deleteFoyer(idFoyer: number) {
