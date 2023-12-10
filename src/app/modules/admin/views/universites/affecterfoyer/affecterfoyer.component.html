@@ -1,58 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Add Your Foyer</title>
     <style>
-        /* Add your styles here */
-        body {
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-        }
-
+      
         .container {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 10rem;
         }
 
         h1 span {
-            margin-right: 10px; /* Adjust the value to control the space between spans */
+            margin-right: 100px; 
         }
 
         table {
-            margin-top: 20px; /* Adjust the value to control the space between the h1 and the table */
+            margin-top: 20px;
             width: 80%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+        tr{}
 
         th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
+            border: 0.05px solid #a5a2a2;
+            padding: 5px;
+            text-align:center;
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #d9dadb;
         }
 
         .btn-container {
             display: flex;
-            justify-content: center; /* Center the buttons horizontally */
+            justify-content: center; 
             align-items: center;
         }
 
         .btn-container button {
-            margin: 5px;
+            margin: 10px;
         }
     </style>
-</head>
+
 <body>
     <div class="container text-center mt-3">
         <h1>
@@ -67,15 +54,13 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nom Foyer</th>
+                    <th >Nom Foyer</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let f of foyer">
                     <ng-container>
-                        <td>{{ f.idFoyer }}</td>
                         <td>{{ f.nomFoyer }}</td>
                         <td class="btn-container">
                             <button class="btn btn-success btn-sm" style="text-decoration: none; padding: 5px 10px;" (click)="affecterFoyer(f.idFoyer)">
@@ -94,4 +79,4 @@
         <span class="font-weight-bold"><i class="bi bi-arrow-left"></i> Back</span>
       </button>
 </body>
-</html>
+

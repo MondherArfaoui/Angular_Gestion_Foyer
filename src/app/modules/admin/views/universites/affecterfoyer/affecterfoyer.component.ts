@@ -37,7 +37,6 @@ export class AffecterfoyerComponent implements OnInit {
   affecterFoyer(idFoyer: number) {
     this.universiteservice.affecterFoyerAUniversite(idFoyer, this.uv.nomUniversite.toString()).subscribe(
       () => {
-        this.router.navigate(['/admin/universite/add']);
         this.toastr.success('Foyer assigned to University successfully', 'Success');
       },
       (error) => {
@@ -51,7 +50,6 @@ export class AffecterfoyerComponent implements OnInit {
     this.universiteservice.desaffecterFoyerAUniversite(this.uv.idUniversite).subscribe(
       () => {
         this.toastr.success('Foyer removed from University successfully', 'Success');
-        // Add any logic you need after desaffecting the foyer
       },
       (error) => {
         this.toastr.error('Error removing Foyer from University', 'Error');

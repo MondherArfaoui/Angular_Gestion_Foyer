@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Universite } from 'src/app/core/models/universite/universite';
 import { UniversiteService } from 'src/app/core/services/universite/universite.service';
 
@@ -8,12 +9,15 @@ import { UniversiteService } from 'src/app/core/services/universite/universite.s
   styleUrls: ['./details-universite.component.css']
 })
 export class DetailsUniversiteComponent implements OnInit {
+  
 
-  constructor( private universiteservice:UniversiteService) { }
+
+  constructor( private universiteservice:UniversiteService, private router: Router,) { }
   currentUniversite: Universite ={
     idUniversite:0,
     nomUniversite:"",
     adresse:"",
+  
    
 };
 
@@ -43,7 +47,10 @@ refreshList(): void {
 };
   this.currentIndex = -1;
 }
-
+goBack() {
+        
+  this.router.navigate(['/admin/universite/universite']); 
+}
 setActiveTutorial(universite: Universite, index: number): void {
   this.currentUniversite = universite;
   this.currentIndex = index;

@@ -1,4 +1,5 @@
 <div class="container">
+
   <h2 class="title text-center">
     <span class="title-word title-word-1">Details</span>
     <span>&nbsp;</span>
@@ -8,10 +9,19 @@
     <span>&nbsp;</span>
     <span class="title-word title-word-4">Disponibles</span>
   </h2>
-  <div class="alert alert-danger text-center">
-    <a routerLink="/universites/universite" class="alert-link">More details</a>
-  </div>
-</div>
+    <div class="input-group rounded">
+      <button class="btn btn-sm btn-warning" (click)="goBack()">
+        <span class="font-weight-bold"><i class="bi bi-arrow-left"></i> Back</span>
+      </button> 
+      <form class="col-md-6">
+        
+        <app-search  (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+      
+       </form>
+       
+
+
+
 
 
 
@@ -32,17 +42,17 @@
         <div class="card-body text-primary">
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted text-center" style="font-family: 'Arial', sans-serif;">
-              <span style="font-weight: bold; text-decoration: underline; color: #007bff;">Adresse:</span>
+              <span style="font-weight: bold; text-decoration: underline; color: #477eb9;">Adresse:</span>
               {{ univ.adresse }}
             </h6>
             <hr>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-eye" viewBox="0 0 16 16">
-              <!-- SVG paths remain unchanged -->
             </svg>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

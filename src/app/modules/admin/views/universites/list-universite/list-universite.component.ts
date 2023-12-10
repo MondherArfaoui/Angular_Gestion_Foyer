@@ -43,19 +43,17 @@ export class ListUniversiteComponent implements OnInit {
   }
 
   deleteUniv(idUniversite: number) {
-    const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+    const confirmDelete = window.confirm('Are you sure you want to delete this Universite?');
   
     if (confirmDelete) {
       this.universiteservice.deleteUniversite(idUniversite).subscribe(
         () => {
-          // Item deleted successfully
           this.allUni();
-          alert('Item deleted successfully'); // You can use another notification method
+          alert('Universite deleted successfully'); 
         },
         (error) => {
-          // Handle error
-          console.error('Error deleting item', error);
-          alert('Error deleting item'); // You can use another notification method
+          console.error('Error deleting Universite', error);
+          alert('Error deleting Universite'); 
         }
       );
     }

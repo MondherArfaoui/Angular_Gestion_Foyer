@@ -1,9 +1,82 @@
 <div class="container mt-4 text-center">
+  <style>
+
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+  
+    .container {
+      text-align: center;
+      margin-top: 3rem;
+    }
+  
+    .card {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+  
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .form-cadre {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .form-group {
+      margin-bottom: 20px;
+    }
+  
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #333; /* Set label color */
+    }
+  
+    .beautify-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+  
+    .alert {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  
+    .btn-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+  
+    .btn {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  </style>
+  
+  
    <div class="card p-4">
      <h1 class="font-weight-bold">{{ action }} Universite</h1>
      <form #f="ngForm">
        <div class="form-group col-md-6 mx-auto">
-         <label class="font-weight-bold">Name:*</label>
+         <label class="font-weight-bold">Name:</label>
          <input type="text" name="nomUni" [(ngModel)]="universite.nomUniversite" class="form-control"
            required minlength="3" pattern="[A-Za-z]{3,100}" #n="ngModel">
          <div class="alert alert-danger mt-2" *ngIf="n.invalid && n.touched">
@@ -13,7 +86,7 @@
          </div>
        </div>
        <div class="form-group col-md-6 mx-auto">
-         <label class="font-weight-bold">Adresse</label>
+         <label class="font-weight-bold">Adresse:</label>
          <input type="text" name="adresse" [(ngModel)]="universite.adresse" class="form-control" required #p="ngModel">
          <div class="alert alert-danger mt-2" *ngIf="p.invalid && p.touched">
            <div *ngIf="p.hasError('required')">
@@ -40,8 +113,21 @@
          &nbsp;
          &nbsp;
          &nbsp;
-         <span class="ml-3"></span> <!-- Adjust the spacing as needed -->
- 
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+         &nbsp;
+
          <button (click)="add()" class="btn btn-sm btn-success" [disabled]="f.invalid">
            <span class="font-weight-bold">{{ action }}</span>
          </button>
