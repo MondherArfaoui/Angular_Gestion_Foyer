@@ -5,6 +5,7 @@ import { Foyer } from 'src/app/core/models/foyer/foyer';
 import { Universite } from 'src/app/core/models/universite/universite';
 import { FoyerService } from 'src/app/core/services/foyer/foyer.service';
 import { UniversiteService } from 'src/app/core/services/universite/universite.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-affecterfoyer',
@@ -37,24 +38,50 @@ export class AffecterfoyerComponent implements OnInit {
   affecterFoyer(idFoyer: number) {
     this.universiteservice.affecterFoyerAUniversite(idFoyer, this.uv.nomUniversite.toString()).subscribe(
       () => {
-        this.toastr.success('Foyer assigned to University successfully', 'Success');
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Foyer assigned to University successfully!',
+          timer: 2000  // 2 seconds
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 2000);  // Wait for the notification to be visible for 2 seconds before reloading
       },
       (error) => {
-        this.toastr.error('Error assigning Foyer to University', 'Error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error assigning Foyer to University',
+          timer: 2000  // 2 seconds
+        });
       }
     );
   }
-  
-      
+
   desaffecterFoyer() {
     this.universiteservice.desaffecterFoyerAUniversite(this.uv.idUniversite).subscribe(
       () => {
-        this.toastr.success('Foyer removed from University successfully', 'Success');
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Foyer removed from University successfully!',
+          timer: 2000  // 2 seconds
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 2000);  // Wait for the notification to be visible for 2 seconds before reloading
       },
       (error) => {
-        this.toastr.error('Error removing Foyer from University', 'Error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error removing Foyer from University',
+          timer: 2000  // 2 seconds
+        });
       }
     );
   }
+
 }
 

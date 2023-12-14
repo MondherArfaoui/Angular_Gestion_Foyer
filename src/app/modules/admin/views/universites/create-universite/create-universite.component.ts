@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Universite } from 'src/app/core/models/universite/universite';
 import { UniversiteService } from 'src/app/core/services/universite/universite.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -45,33 +46,38 @@ export class CreateUniversiteComponent implements OnInit {
       this.listUniversite = data;
     });
   }
-      add() {
-        if (this.action == 'update') {
-        
-          this.universiteservice
-          
-            .updateUniversite(this.universite)
-            .subscribe(() => console.log('complete'));
-            this.toastr.success('University updeted successfully', 'Success')
-
-           
-        } else {
-          
-          console.log('this.universite:', this.universite);
-          this.toastr.success('University added successfully', 'Success');
-          this.universiteservice.addUniversite(this.universite).subscribe((result) => {
-           
-            if (result) {
-              this.toastr.success('University added successfully', 'Success');
-             
-              this.listUniversite = [this.universite, ...this.listUniversite];
-            
-              location.reload();
-            }
+  add() {
+    if (this.action == 'update') {
+      this.universiteservice.updateUniversite(this.universite).subscribe(() => {
+        console.log('complete');
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'University updated successfully!',
+          timer: 2000  // 2 seconds
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 2000);  // Wait for the notification to be visible for 2 seconds before reloading
+      });
+    } else {
+      console.log('this.universite:', this.universite);
+      this.universiteservice.addUniversite(this.universite).subscribe((result) => {
+        if (result) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'University added successfully!',
+            timer: 2000  // 2 seconds
           });
+          setTimeout(() => {
+            this.listUniversite = [this.universite, ...this.listUniversite];
+            location.reload();
+          }, 2000);  // Wait for the notification to be visible for 2 seconds before reloading
         }
-                 
-      }
+      });
+    }
+  }
      
       goBack() {
         

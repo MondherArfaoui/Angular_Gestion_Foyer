@@ -24,7 +24,7 @@
     "ngx-sweetalert2": "^0.2.7",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.10.0",
+    "sweetalert2": "^11.10.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.13.3"
   },

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Universite } from 'src/app/core/models/universite/universite';
 import { EtudiantService } from 'src/app/core/services/etudiant/etudiant.service';
 import { UniversiteService } from 'src/app/core/services/universite/universite.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-universite',
@@ -43,20 +44,36 @@ export class ListUniversiteComponent implements OnInit {
   }
 
   deleteUniv(idUniversite: number) {
-    const confirmDelete = window.confirm('Are you sure you want to delete this Universite?');
-  
-    if (confirmDelete) {
-      this.universiteservice.deleteUniversite(idUniversite).subscribe(
-        () => {
-          this.allUni();
-          alert('Universite deleted successfully'); 
-        },
-        (error) => {
-          console.error('Error deleting Universite', error);
-          alert('Error deleting Universite'); 
-        }
-      );
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.universiteservice.deleteUniversite(idUniversite).subscribe(
+          () => {
+            this.allUni();
+            Swal.fire(
+              'Deleted!',
+              'Universite deleted successfully.',
+              'success'
+            );
+          },
+          (error) => {
+            console.error('Error deleting Universite', error);
+            Swal.fire(
+              'Error!',
+              'Error deleting Universite',
+              'error'
+            );
+          }
+        );
+      }
+    });
   }
   toadd() {
     this.router.navigate(['/admin/universite/add']);

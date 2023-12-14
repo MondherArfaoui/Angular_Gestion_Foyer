@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  @Input()
+ 
   enteredsearchValue: string = "";
  
   @Output()
