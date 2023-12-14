@@ -1,28 +1,70 @@
+<div class="container">
+  
 
+    <h2 class="clip-text animated">Welcome to our universities</h2>
 
-                            <div class="container">
-    
-                                <h2 class="clip-text animated">Welcome to our universities</h2>
+    <div class="line">
+        <h2 class="lineUp">Top Listed Universities</h2>
+    </div>
+
+    <input
+        type="search"
+        [(ngModel)]="searchValue"
+        (input)="onSearchTextChanged()"
+        class="form-control rounded search-input"
+        placeholder="Search"
+        aria-label="Search"
+    />
+
+    <div class="row mt-4">
+        <!-- University Slider START -->
+        <div class="tiny-slider arrow-round arrow-blur arrow-hover">
+            <div class="tiny-slider-inner" data-autoplay="false" data-arrow="true" data-edge="2" data-dots="false" data-items="3" data-items-lg="2" data-items-sm="1">
+
+                <!-- Card Item START -->
+                <div class="pb-4" *ngFor="let u of filteredUniversities; let i = index">
+                    <div class="card p-2 border">
+                        <div class="rounded-top overflow-hidden">
+                            <!-- ... (rest of the card content) ... -->
+                            <!-- Hover element -->
+                            <div class="card-img-overlay">
+                                <div class="card-element-hover d-flex justify-content-end">
+                                    <a href="#" class="icon-md bg-white rounded-circle text-center">
+                                        <i class="fas fa-shopping-cart text-danger"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <h1>
-                                <span>There</span>
-                                <span>are</span>
-                                <span>no</span>
-                                <span>limits</span>
-                                <span>to</span>
-                                <span>what</span>
-                                <span>you</span>
-                                <span>can</span>
-                                <span>accomplish,</span>
-                                <span>except</span>
-                                <span>the</span>
-                                <span>limits</span>
-                                <span>you</span>
-                                <span>place</span>
-                                <span>on</span>
-                                <span>your</span>
-                                <span>own</span>
-                                <span>thinking.</span>
-                              </h1>
-                              <!--Brian Tracy-->
-                              
+                        </div>
+                        <div class="card-body">
+                            <!-- ... (rest of the card content) ... -->
+                            <!-- Title -->
+                            <h5 class="card-title mb-2"><a href="#">{{ u.nomUniversite }}</a></h5>
+                            <!-- Badge and Price -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="badge bg-info bg-opacity-10 text-info">
+                                    <i class="fas fa-circle small fw-bold me-2"></i>+ 3 years
+                                </a>
+                                <!-- Price -->
+                              <!-- Price -->
+                         <h6 class="text-success mb-0" style="color: #28a745;">Check Website</h6>
+
+                            </div>
+                            <!-- University Details -->
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <!-- University Location and Styling based on the address -->
+                                <h6 class="text-muted mb-0">
+                                    <span [ngStyle]="{
+                                        'color': u.adresse === 'Tunis' ? '#71BC75' : (u.adresse === 'Sousse' ? 'blue' : (u.adresse === 'Sfax' ? '#D2B48C' : '#550F00'))
+                                    }">{{ u.adresse }}</span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Item END -->
+
+            </div>
+        </div>
+        <!-- University Slider END -->
+    </div>
+</div>
